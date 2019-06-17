@@ -43,6 +43,18 @@
             margin: 0;
             padding: 0;
         }
+        
+        .butt{
+	    border: 0;
+	    padding: 0;
+	    display: inline;
+	    background: none;
+	    color: blue;
+		}
+		.butt:hover {
+		    cursor: pointer;
+		}
+        
     </style>
 </head>
 
@@ -263,13 +275,18 @@ var data = '[{"id":2,"name":"Hotel Eiffel Blomet","latitude":48.841736,"longitud
                 }
                 infowincontent.appendChild(document.createElement('br'));
 				var hiddenForm=document.createElement('form');
-				hiddenForm.setAttribute('action','http://localhost:8080/reserver.html');
-				hiddenForm.setAttribute('method','post');
-                var link = document.createElement('a');
-                link.setAttribute('id', 'link1');
-                link.setAttribute('href', 'http://localhost:8080/dashboardMed.html?hotelName='+obj[$i].name);
-                link.innerHTML = "RESERVER"
-                infowincontent.appendChild(link);
+				hiddenForm.setAttribute('action','/reserver.html');
+				hiddenForm.setAttribute('method','POST');
+				var hiddenInput=document.createElement('input');
+				hiddenInput.setAttribute('type','hidden');
+				hiddenInput.setAttribute('name','NomHotel');
+				hiddenInput.setAttribute('value',obj[$i].name);
+				hiddenForm.appendChild(hiddenInput);
+				var butt=document.createElement('button');
+				butt.setAttribute('class','butt');
+				butt.innerHTML = "RESERVER"
+				hiddenForm.appendChild(butt);
+				infowincontent.appendChild(hiddenForm);
                 let clone = infowincontent;
                 let markkclone = marker;
                 markkclone.addListener('click', function () {
