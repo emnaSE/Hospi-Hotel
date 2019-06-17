@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="assets/img/icons/favicon.ico" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="assets/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="assets/vendor/animate/animate.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="assets/vendor/css-hamburgers/hamburgers.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="assets/vendor/select2/select2.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="assets/css/util.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+	<!--===============================================================================================-->
+
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
+     <script src="assets/js/cookies.js"></script>
+     <script type="text/javascript">
+     
+
+    	$(document).ready(function(){
+    	    var acookie = getCookieByName("userInfo");
+    	    
+    	    if (!acookie) {
+    	        alert("Cookie not found.");
+    	    }else{
+    	    	redirectMe(JSON.parse(acookie).role);
+    	    }
+    	});
+    
+     </script>
+</head>
+
+<body>
+
+
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('assets/img/img-01.jpg');">
+			<div class="wrap-login100 p-t-190 p-b-30">
+<form class="login100-form validate-form" id="oginform" action="/Check" method="get" >
+					<div class="login100-form-avatar">
+						<img src="assets/img/avatar-01.png" alt="AVATAR">
+					</div>
+
+					<span class="login100-form-title p-t-20 p-b-45">
+						Sign in
+					</span>
+
+					<div class="wrap-input100 validate-input m-b-10" data-validate="Username is required">
+						<input class="input100" type="text" name="username" placeholder="Username" id="username">
+
+						<span class="symbol-input100">
+							<i class="fa fa-user"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-10" data-validate="Password is required">
+						<input class="input100" type="password" name="password" placeholder="Password" id="password">
+
+						<span class="symbol-input100">
+							<i class="fa fa-lock"></i>
+						</span>
+					</div>
+
+					<div class="container-login100-form-btn p-t-10">
+						<input type="submit" class="login100-form-btn" name="login" id="login" value="login"
+							>
+
+					</div>
+
+					<div class="text-center w-full p-t-25 p-b-230">
+						<a href="#" class="txt1">
+							Forgot Username / Password?
+						</a>
+					</div>
+
+					<div class="text-center w-full">
+						<a class="txt1" href="#">
+							Create new account
+							<i class="fa fa-long-arrow-right"></i>
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+<script>
+
+$("#oginform").submit(function(e) {
+    e.preventDefault(); 
+
+    var form = $(this);
+    var url = form.attr('action');
+
+    $.ajax({
+ 
+           type: "GET",
+           url: url,
+           data: form.serialize(),
+           success: function(data)
+           {
+        	   
+        	   if (data != "" && data != null) {
+        		   setCookie("userInfo", JSON.stringify(data), 30);
+        	  }
+              
+		if (data.role=="M") {
+
+			window.location.href ="dashboardMed.html";
+			return;
+			
+		} 
+		
+		if (data.role=="H") {
+
+			window.location.href ="dashboardHotel.html";
+			return;
+			
+		} 
+		
+		if (data.role=="P") {
+
+			window.location.href ="dashboardPatient.html";
+			return;
+			
+		} 
+		
+		else {
+			window.location.href ="Reservation.html";
+			return;
+			
+			
+		}     
+           }
+         });
+
+});
+
+
+</script>
+
+
+<script>
+function setCookie(cname,cvalue,exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  var expires = "expires=" + d.toGMTString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function checkCookie() {
+	  //var user=getCookie("username");
+	
+	   var user=document.getElementById("username").value;
+	    console.log(user);
+	     if (user != "" && user != null) {
+	       setCookie("username", user, 30);
+	     
+	  }
+	}
+</script>
+
+	
+	<!--===============================================================================================-->
+	<script src="assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="assets/vendor/bootstrap/js/popper.js"></script>
+	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="assets/vendor/select2/select2.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="assets/js/main.js"></script>
+	
+
+</body>
+
+</html>
