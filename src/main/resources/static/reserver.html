@@ -36,9 +36,11 @@
 	    $('#dateFin').blur(function(){
 	    	var dateDeb = new Date($('#dateDeb').val());
 	    	var dateFin = new Date($('#dateFin').val());
-	    	alert(dateDeb.getTime()+" "+dateFin.getTime());
+	    	//alert(dateDeb.getTime()+" "+dateFin.getTime());
 	    	var valid=validateResDate(dateDeb,dateFin);
-	    	alert(valid);
+	    	if(valid=false){
+	    		alert("veuiller verifier les dates");
+	    	}
 	    });
 	});
     
@@ -69,26 +71,26 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./medecin.html">
+                        <a class="nav-link" href="medecin.html">
                             <i class="nc-icon nc-circle-09"></i>
                             <p>Profile</p>
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./Medreservations.html">
+                        <a class="nav-link" href="Medreservations.html">
                             <i class="nc-icon nc-notes"></i>
                             <p>Mes Réservations</p>
                         </a>
                     </li>
 
                     <li class="nav-item active">
-                        <a class="nav-link" href="./reserver.html">
+                        <a class="nav-link" href="reserver.html">
                             <i class="nc-icon nc-atom"></i>
                             <p>Réserver</p>
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./MedNotifications.html">
+                        <a class="nav-link" href="MedNotifications.html">
                             <i class="nc-icon nc-bell-55"></i>
                             <p>Notifications</p>
                         </a>
@@ -181,7 +183,7 @@
                                         <div class="row">
                                             <div class="col-md-5 pr-1">
                                                 <div class="form-group">
-                                                    <label>Hôpital</label>
+                                                    <label>Hotel</label>
                                                     <input type="text" class="form-control" name="nomHotel" readonly="readonly" id="hotelName"
                                                        value="">
                                                 </div>

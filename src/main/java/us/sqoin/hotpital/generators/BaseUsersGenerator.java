@@ -26,7 +26,7 @@ public class BaseUsersGenerator {
 	}
 
 	public static List<BaseUser> getDefaultUsers() {
-		return Arrays.asList(user1,user2,user3,user4);
+		return Arrays.asList(user1,user2,user3,user4,user5);
 	}
 
 	public static BaseUser getUser1() {
