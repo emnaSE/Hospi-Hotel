@@ -30,9 +30,9 @@ public class ReservationWebService {
 	}
 	
 	@GetMapping("/getOnlyoneReservationbyname")
-	public Reservation getResevationbyName(String name) {
+	public List<Reservation> getResevationbyName(String name) {
 	
-		return ReservateGenerator.getReservationByName(name);
+		return ReservateGenerator.getReservationByNameMed(name);
 	}
 	
 	@GetMapping("/addReserv")
@@ -54,9 +54,17 @@ public class ReservationWebService {
 	
 	*/
 	
+	@GetMapping("/getReservationByNameHotel")
+	public List<Reservation> getResevationbyNameHotel(String name) {
 	
+		return ReservateGenerator.getReservationByNameHotel(name);
+	}
 	
+	@GetMapping("/getReservationByNamePatient")
+	public List<Reservation> getResevationbyPatientName(String name) {
 	
+		return ReservateGenerator.getReservationByNamePatient(name);
+	}
 
 	
 }
