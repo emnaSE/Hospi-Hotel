@@ -282,12 +282,14 @@
                 }
                 infowincontent.appendChild(document.createElement('br'));
 
+
                 var link=document.createElement('a');
 				var param=encodeURIComponent(obj[$i].name);
 				var url="reserver.html?hotelName="+param;
 				link.setAttribute('href',url);
 				link.innerHTML="RESERVER";
 				infowincontent.appendChild(link);
+
                 let clone = infowincontent;
                 let markkclone = marker;
                 markkclone.addListener('click', function () {

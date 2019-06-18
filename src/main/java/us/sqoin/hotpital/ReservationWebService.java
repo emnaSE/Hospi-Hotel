@@ -42,9 +42,17 @@ public class ReservationWebService {
 	 //  PatientGenerator.addPatient(v.getId());
 		return ReservateGenerator.addReservation(nomHotel, nomPatient, nomMed, nb_lits_res, date_Deb, date_Fin);
 		
+
 	}
 	
+	/*
+	public Reservation AddReservation(Reservation v,int typeofnotif,String content) {	
+	 System.out.print( ReservateGenerator.getDefaultReservations().size());
+	 v.setId((long) (ReservateGenerator.getDefaultReservations().size()+1));
+	   PatientGenerator.addPatient(v.getId());
+		return ReservateGenerator.addReservation(v,typeofnotif,content);
 	
+	*/
 	
 	
 	

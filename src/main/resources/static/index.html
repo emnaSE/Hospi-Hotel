@@ -25,6 +25,7 @@
 	<!--========================================================-->
 
      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
+
      <script src="assets/js/cookies.js"></script>
      <script type="text/javascript">
      
@@ -38,6 +39,7 @@
     	});
     
      </script>
+
 </head>
 
 <body>
@@ -46,10 +48,12 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('assets/img/img-01.jpg');">
 			<div class="wrap-login100 p-t-190 p-b-30">
+
 <form class="login100-form validate-form" id="oginform" action="/Check" method="get" >
 					<div style="display:none" class="alert alert-danger" role="alert" id="alertt">
 								    	  Nom utilistaeur ou mot de passe incorrect!
 								    	</div>
+
 					<div class="login100-form-avatar">
 						<img src="assets/img/avatar-01.png" alt="AVATAR">
 					</div>
@@ -100,6 +104,7 @@
 <script>
 
 $("#oginform").submit(function(e) {
+alert("rrr");
     e.preventDefault(); 
 
     var form = $(this);
@@ -111,6 +116,7 @@ $("#oginform").submit(function(e) {
            url: url,
            data: form.serialize(),
            success: function(data)
+
            {
         	   
         	   if (data != "" && data != null) {
@@ -118,7 +124,11 @@ $("#oginform").submit(function(e) {
         	  }else{
         		  $('#alertt').show();
         	  }
+
               
+             
+            	 
+            	
 		if (data.role=="M") {
 
 			window.location.href ="dashboardMed.html";
@@ -140,7 +150,7 @@ $("#oginform").submit(function(e) {
 			
 		} 
 		
-		    
+
            }
          });
 

@@ -70,6 +70,13 @@ public class ReservateGenerator {
 
 	
 	
+/*
+	public static Reservation addReservation(Reservation v,int typenotif,String content) {
+		listResev.add(v);
+	NotificationGenerator.addNewNotification(v, typenotif,content);
+
+		return v;
+*/
 //	public static Reservation addReservation(Reservation v) {
 //		listResev.add(v);
 ////	NotificationGenerator.addNewNotification(v, typenotif,content);
@@ -84,6 +91,7 @@ public class ReservateGenerator {
 		listResev.add(r);
 		return r;
 	
+
 	}
 
 

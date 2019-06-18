@@ -28,6 +28,17 @@ public class Reservation implements Serializable {
 
 	public Reservation(Long id, String nomHotel, String nomPatient, String nomMed, int nb_lits_res, Date date_Deb,
 			Date date_Fin ,int etat) {
+/*
+		super();
+		this.id = id;
+		this.nomHotel = nomHotel;
+		this.nomPatient = nomPatient;
+		this.nomMed = nomMed;
+		this.nb_lits_res = nb_lits_res;
+		Date_Deb = date_Deb;
+		Date_Fin = date_Fin;
+		this.etat = etat;
+*/
 		super();
 		this.id = id;
 		this.nomHotel = nomHotel;
@@ -50,6 +61,7 @@ public class Reservation implements Serializable {
 		Date_Deb = dd;
 		Date_Fin = ff;
 		etat =0;
+
 
 	}
 
