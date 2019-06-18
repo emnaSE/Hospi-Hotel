@@ -160,7 +160,7 @@
                                             <th>Date Fin</th>
                                             <th>Nombre de lits</th>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="tableBody">
                                             <tr>
                                                 <td>Hotel Darcet</td>
                                                 <td>Mouadh</td>
@@ -279,17 +279,52 @@
 
 
 
- jQuery(document).ready(function(){ 
-	 var acookie = getCookieByName("userInfo");
-	  //  if (acookie) {
-     //$('#MedName').val(JSON.parse(acookie).username);
-	   // }
-	var idMed=JSON.parse(acookie).id;
+ jQuery(document).ready(function(){
+	 /***********/
+	var reservations;
+	
+		$.ajax({
+	        type: "GET",
+	        url: "/getOnlyoneReservationbyname",
+	        type : 'GET',
+	        data : 'name=Zarrouk',
+	        success: function(data)
+	        {
+	          reservations=JSON.stringify(data);
+	           alert(reservations);
+	           reservations = JSON.parse(reservations);
+	   			fillTable();
+	        }
+	      });
+		function fillTable(){
+			alert("Nom Hotel ="+reservations.nomHotel);
+				var tr = document.createElement('tr')
+				var td1 = document.createElement('td');
+				td1.textContent=reservations.nomHotel;
+				tr.append(td1);
+				var td2 = document.createElement('td');
+				td2.textContent=reservations.nomPatient;
+				tr.append(td2);
+				var td3 = document.createElement('td');
+				td3.textContent=reservations.date_Deb;
+				tr.append(td3);
+				var td4 = document.createElement('td');
+				td4.textContent=reservations.date_Fin;
+				tr.append(td4);
+				var td5 = document.createElement('td');
+				td5.textContent=reservations.nb_lits_res;
+				tr.append(td5);
+				$('#tableBody').append(tr);
+		}
+	
 		
+	/***********/
+
+		/********** 5edmet mohamed 
 		var jqxhr = $.get( "getReservation?medecin="+idMed, function() {
 			
 			})
-			  .done(function(data) {
+			  .done(function(data){
 			  	alert(JSON.stringify(data));
 			  	//var info=JSON.stringify(data);
 			  	var i=0;
@@ -321,10 +356,11 @@
 			  });
 			 
 			
-			jqxhr.always(function() {
+			//jqxhr.always(function() {
 			
-			});
+			//}); 
 
+		*********/
 	});
 
 </script>
