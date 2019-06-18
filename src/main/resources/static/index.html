@@ -22,9 +22,24 @@
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="assets/css/util.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
-	<!--===============================================================================================-->
+	<!--========================================================-->
 
      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
+
+     <script src="assets/js/cookies.js"></script>
+     <script type="text/javascript">
+     
+
+    	$(document).ready(function(){
+    	    var acookie = getCookieByName("userInfo");
+    	    
+    	    if (acookie) {
+    	    	redirectMe(JSON.parse(acookie).role);
+    	    }
+    	});
+    
+     </script>
+
 </head>
 
 <body>
@@ -33,7 +48,12 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('assets/img/img-01.jpg');">
 			<div class="wrap-login100 p-t-190 p-b-30">
-<form class="login100-form validate-form" id="oginform" action="/Check" method="get" onclick="checkCookie()">
+
+<form class="login100-form validate-form" id="oginform" action="/Check" method="get" >
+					<div style="display:none" class="alert alert-danger" role="alert" id="alertt">
+								    	  Nom utilistaeur ou mot de passe incorrect!
+								    	</div>
+
 					<div class="login100-form-avatar">
 						<img src="assets/img/avatar-01.png" alt="AVATAR">
 					</div>
@@ -96,8 +116,15 @@ alert("rrr");
            url: url,
            data: form.serialize(),
            success: function(data)
-           {          
-              alert(data);
+
+           {
+        	   
+        	   if (data != "" && data != null) {
+        		   setCookie("userInfo", JSON.stringify(data), 30);
+        	  }else{
+        		  $('#alertt').show();
+        	  }
+
               
              
             	 
@@ -123,12 +150,7 @@ alert("rrr");
 			
 		} 
 		
-		else {
-			window.location.href ="Reservation.html";
-			return;
-			
-			
-		}        
+
            }
          });
 

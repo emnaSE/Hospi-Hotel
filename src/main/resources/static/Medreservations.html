@@ -27,52 +27,53 @@
 
         Tip 2: you can also add an image using data-image tag
     -->
-    <div class="sidebar-wrapper">
-        <div class="logo">
-            <a href="http://www.creative-tim.com" class="simple-text">
-                Creative Tim
-            </a>
-        </div>
-        <ul class="nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="dashboardHotel.html">
-                    <i class="nc-icon nc-chart-pie-35"></i>
-                    <p>Dashboard</p>
-                </a>
-            </li>
-            <li>
-                <a class="nav-link" href="Profil.html">
-                    <i class="nc-icon nc-circle-09"></i>
-                    <p>Profile</p>
-                </a>
-            </li>
-            <li>
-                <a class="nav-link" href="Réservations.html">
-                    <i class="nc-icon nc-notes"></i>
-                    <p>List Réservations</p>
-                </a>
-            </li>
-            <li>
-                <a class="nav-link" href="Stock.html">
-                    <i class="nc-icon nc-atom"></i>
-                    <p>Stock</p>
-                </a>
-            </li>
-            <li>
-                <a class="nav-link" href="notifications.html">
-                    <i class="nc-icon nc-bell-55"></i>
-                    <p>Notifications</p>
-                </a>
-            </li>
+            <div class="sidebar-wrapper">
+                <div class="logo">
+                    <a href="#" class="simple-text">
+                        Hospi-Hotel
+                    </a>
+                </div>
+                <ul class="nav">
+                    <li>
+                        <a class="nav-link" href="dashboardMed.html">
+                            <i class="nc-icon nc-chart-pie-35"></i>
+                            <p>Tableau De Bord</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="./medecin.html">
+                            <i class="nc-icon nc-circle-09"></i>
+                            <p>Profile</p>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="./Medréservations.html">
+                            <i class="nc-icon nc-notes"></i>
+                            <p>Mes Réservations</p>
+                        </a>
+                    </li>
 
-        </ul>
-    </div>
+                    <li>
+                        <a class="nav-link" href="./reserver.html">
+                            <i class="nc-icon nc-atom"></i>
+                            <p>Réserver</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="./MedNotifications.html">
+                            <i class="nc-icon nc-bell-55"></i>
+                            <p>Notifications</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
         </div>
         <div class="main-panel">
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg " color-on-scroll="500">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#pablo"> Table List </a>
+                    <a class="navbar-brand" href="#pablo">Tableau De Bord</a>
                     <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                         aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar burger-lines"></span>
@@ -84,7 +85,7 @@
                             <li class="nav-item">
                                 <a href="#" class="nav-link" data-toggle="dropdown">
                                     <i class="nc-icon nc-palette"></i>
-                                    <span class="d-lg-none">Dashboard</span>
+                                    <span class="d-lg-none">Tableau De Bord</span>
                                 </a>
                             </li>
                             <li class="dropdown nav-item">
@@ -104,21 +105,21 @@
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     <i class="nc-icon nc-zoom-split"></i>
-                                    <span class="d-lg-block">&nbsp;Search</span>
+                                    <span class="d-lg-block">&nbsp;Rechercher</span>
                                 </a>
                             </li>
                         </ul>
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
                                 <a class="nav-link" href="#pablo">
-                                    <span class="no-icon">Account</span>
+                                    <span class="no-icon">Compte</span>
                                 </a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="http://example.com"
                                     id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
                                     aria-expanded="false">
-                                    <span class="no-icon">Dropdown</span>
+                                    <span class="no-icon">Info</span>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     <a class="dropdown-item" href="#">Action</a>
@@ -131,7 +132,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#pablo">
-                                    <span class="no-icon">Log out</span>
+                                    <span class="no-icon">Se Déconnecter</span>
                                 </a>
                             </li>
                         </ul>
@@ -145,124 +146,41 @@
                         <div class="col-md-12">
                             <div class="card strpied-tabled-with-hover">
                                 <div class="card-header ">
-                                    <h4 class="card-title">Striped Table with Hover</h4>
-                                    <p class="card-category">Here is a subtitle for this table</p>
+                                    <h4 class="card-title">Réservations en cours</h4>
+                                    <p class="card-category">Réservations</p>
                                 </div>
                                 <div class="card-body table-full-width table-responsive">
                                     <table class="table table-hover table-striped">
                                         <thead>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Salary</th>
-                                            <th>Country</th>
-                                            <th>City</th>
+                                            <th>Nom Hotel</th>
+                                            <th>Nom Patient</th>
+                                            <th>Date Début</th>
+                                            <th>Date Fin</th>
+                                            <th>Nombre de lits</th>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>1</td>
-                                                <td>Dakota Rice</td>
-                                                <td>$36,738</td>
-                                                <td>Niger</td>
-                                                <td>Oud-Turnhout</td>
-                                            </tr>
-                                            <tr>
+                                                <td>Hotel Darcet</td>
+                                                <td>Mouadh</td>
+                                                <td>14/06/2019</td>
+                                                <td>25/06/2019</td>
                                                 <td>2</td>
-                                                <td>Minerva Hooper</td>
-                                                <td>$23,789</td>
-                                                <td>Curaçao</td>
-                                                <td>Sinaai-Waas</td>
                                             </tr>
                                             <tr>
-                                                <td>3</td>
-                                                <td>Sage Rodriguez</td>
-                                                <td>$56,142</td>
-                                                <td>Netherlands</td>
-                                                <td>Baileux</td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Philip Chaney</td>
-                                                <td>$38,735</td>
-                                                <td>Korea, South</td>
-                                                <td>Overland Park</td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Doris Greene</td>
-                                                <td>$63,542</td>
-                                                <td>Malawi</td>
-                                                <td>Feldkirchen in Kärnten</td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>
-                                                <td>Mason Porter</td>
-                                                <td>$78,615</td>
-                                                <td>Chile</td>
-                                                <td>Gloucester</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="card card-plain table-plain-bg">
-                                <div class="card-header ">
-                                    <h4 class="card-title">Table on Plain Background</h4>
-                                    <p class="card-category">Here is a subtitle for this table</p>
-                                </div>
-                                <div class="card-body table-full-width table-responsive">
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Salary</th>
-                                            <th>Country</th>
-                                            <th>City</th>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Dakota Rice</td>
-                                                <td>$36,738</td>
-                                                <td>Niger</td>
-                                                <td>Oud-Turnhout</td>
-                                            </tr>
-                                            <tr>
+                                                <td>Hotel de L'Union</td>
+                                                <td>Ismail</td>
+                                                <td>14/06/2019</td>
+                                                <td>25/06/2019</td>
                                                 <td>2</td>
-                                                <td>Minerva Hooper</td>
-                                                <td>$23,789</td>
-                                                <td>Curaçao</td>
-                                                <td>Sinaai-Waas</td>
                                             </tr>
                                             <tr>
-                                                <td>3</td>
-                                                <td>Sage Rodriguez</td>
-                                                <td>$56,142</td>
-                                                <td>Netherlands</td>
-                                                <td>Baileux</td>
+                                                <td>Hotel du Printemps</td>
+                                                <td>Hossam</td>
+                                                <td>14/06/2019</td>
+                                                <td>25/06/2019</td>
+                                                <td>2</td>
                                             </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Philip Chaney</td>
-                                                <td>$38,735</td>
-                                                <td>Korea, South</td>
-                                                <td>Overland Park</td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Doris Greene</td>
-                                                <td>$63,542</td>
-                                                <td>Malawi</td>
-                                                <td>Feldkirchen in Kärnten</td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>
-                                                <td>Mason Porter</td>
-                                                <td>$78,615</td>
-                                                <td>Chile</td>
-                                                <td>Gloucester</td>
-                                            </tr>
+                                            
                                         </tbody>
                                     </table>
                                 </div>
