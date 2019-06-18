@@ -17,20 +17,29 @@ public class PatientGenerator {
 	private static Patient P2;
 	private static Patient P3;
 	
+	private static List<Patient> ListPat = new ArrayList<Patient>();
 	
 	
 	static
 	{
-		P1 = new Patient(null, "Foulen", "Ben foulen", "Bardo", 55123456l, new Date());
-		P1 = new Patient(null, "Sami", "Sami", "ARIANA", 58123456l, new Date());
+		P1 = new Patient(1L, "Foulen", "Ben foulen", "Bardo", 55123456l, new Date());
+		P2 = new Patient(2L, "Sami", "Sami", "ARIANA", 58123456l, new Date());
+		ListPat.add(P1);
+		ListPat.add(P2);
 
 	}
 	
 	
 	
-	public static List<Patient> getDefaultMedecins() {
-		return Arrays.asList(P1,P2);
+	public static List<Patient> getDefaultsPatient() {
+	  return ListPat;
 	}
+	public static Patient addPatient(Patient e)
+	{
+		ListPat.add(e);
+		return e;
+	}
+
 	
 
 

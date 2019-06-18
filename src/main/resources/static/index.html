@@ -25,21 +25,6 @@
 	<!--===============================================================================================-->
 
      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
-     <script src="assets/js/cookies.js"></script>
-     <script type="text/javascript">
-     
-
-    	$(document).ready(function(){
-    	    var acookie = getCookieByName("userInfo");
-    	    
-    	    if (!acookie) {
-    	        alert("Cookie not found.");
-    	    }else{
-    	    	redirectMe(JSON.parse(acookie).role);
-    	    }
-    	});
-    
-     </script>
 </head>
 
 <body>
@@ -48,7 +33,7 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('assets/img/img-01.jpg');">
 			<div class="wrap-login100 p-t-190 p-b-30">
-<form class="login100-form validate-form" id="oginform" action="/Check" method="get" >
+<form class="login100-form validate-form" id="oginform" action="/Check" method="get" onclick="checkCookie()">
 					<div class="login100-form-avatar">
 						<img src="assets/img/avatar-01.png" alt="AVATAR">
 					</div>
@@ -99,6 +84,7 @@
 <script>
 
 $("#oginform").submit(function(e) {
+alert("rrr");
     e.preventDefault(); 
 
     var form = $(this);
@@ -110,12 +96,12 @@ $("#oginform").submit(function(e) {
            url: url,
            data: form.serialize(),
            success: function(data)
-           {
-        	   
-        	   if (data != "" && data != null) {
-        		   setCookie("userInfo", JSON.stringify(data), 30);
-        	  }
+           {          
+              alert(data);
               
+             
+            	 
+            	
 		if (data.role=="M") {
 
 			window.location.href ="dashboardMed.html";
@@ -142,7 +128,7 @@ $("#oginform").submit(function(e) {
 			return;
 			
 			
-		}     
+		}        
            }
          });
 
