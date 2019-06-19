@@ -1,5 +1,7 @@
 package us.sqoin.hotpital.generators;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -48,31 +50,80 @@ public class ReservateGenerator {
 		}
 		return r;
 	}
-	public static Reservation getReservationByName(String name)
+	public static List<Reservation> getReservationByNameMed(String name)
 	{
 		List<Reservation> arf = getDefaultReservations();
-		Reservation r=null;
+		List<Reservation>  ListReser = new ArrayList<Reservation>();
+		
 		for (Reservation s : arf) {
 			if(s.getNomMed().equals(name) )
 			{
-			
-			
-				r=s;
-				System.out.println(r);
-			 return r;
+				ListReser.add(s);
+
 			}
 		}
-		return r;
+		return ListReser;
+		
+	}
+	
+	
+	public static List<Reservation> getReservationByNameHotel(String name)
+	{
+		List<Reservation> arf = getDefaultReservations();
+		List<Reservation>  ListHot = new ArrayList<Reservation>();
+		
+		for (Reservation s : arf) {
+			if(s.getNomHotel().equals(name) )
+			{
+				ListHot.add(s);
+
+			}
+		}
+		return ListHot;
+		
+	}
+	
+	
+	public static List<Reservation> getReservationByNamePatient(String name)
+	{
+		List<Reservation> arf = getDefaultReservations();
+		List<Reservation>  ListPa = new ArrayList<Reservation>();
+		
+		for (Reservation s : arf) {
+			if(s.getNomPatient().equals(name) )
+			{
+				ListPa.add(s);
+
+			}
+		}
+		return ListPa;
 		
 	}
 
 	
 	
+/*
 	public static Reservation addReservation(Reservation v,int typenotif,String content) {
 		listResev.add(v);
 	NotificationGenerator.addNewNotification(v, typenotif,content);
 
 		return v;
+*/
+//	public static Reservation addReservation(Reservation v) {
+//		listResev.add(v);
+////	NotificationGenerator.addNewNotification(v, typenotif,content);
+//
+//		return v;
+//	}
+	public static Reservation  addReservation(String nomHotel,String nomPatient,String nomMed,int nb_lits_res,String date_Deb, String date_Fin) throws ParseException {
+		Long id = (long) (getDefaultReservations().size()+1);
+		Date dd =new SimpleDateFormat("yyyy-MM-dd").parse(date_Deb);
+		Date ff =new SimpleDateFormat("yyyy-MM-dd").parse(date_Fin);
+		Reservation r = new Reservation(id, nomHotel, nomPatient, nomMed, nb_lits_res,dd , ff);
+		listResev.add(r);
+		return r;
+	
+
 	}
 
 

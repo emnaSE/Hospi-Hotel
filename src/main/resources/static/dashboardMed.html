@@ -6,7 +6,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Light Bootstrap Dashboard - Free Bootstrap 4 Admin Dashboard by Creative Tim</title>
+    <title>Hospi-Hotel</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
         name='viewport' />
     <!--     Fonts and icons     -->
@@ -17,6 +17,7 @@
     <link href="../assets/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/css/demo.css" rel="stylesheet" />
+    <script src="assets/js/cookies.js"></script>
     <style>
         /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -43,6 +44,21 @@
             margin: 0;
             padding: 0;
         }
+        
+        .butt{
+	    border: 0;
+	    padding: 0;
+	    display: inline;
+	    background: none;
+	    color: blue;
+		}
+		.butt:hover {
+		    cursor: pointer;
+		}
+		#deconnexion:hover{
+			cursor: pointer;
+		}
+        
     </style>
 </head>
 
@@ -68,32 +84,26 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./medecin.html">
+                        <a class="nav-link" href="medecin.html">
                             <i class="nc-icon nc-circle-09"></i>
                             <p>Profile</p>
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./Medréservations.html">
+                        <a class="nav-link" href="Medreservations.html">
                             <i class="nc-icon nc-notes"></i>
                             <p>Mes Réservations</p>
                         </a>
                     </li>
 
                     <li>
-                        <a class="nav-link" href="./reserver.html">
+                        <a class="nav-link" href="reserver.html">
                             <i class="nc-icon nc-atom"></i>
                             <p>Réserver</p>
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./ListHotel.html">
-                            <i class="nc-icon nc-pin-3"></i>
-                            <p>Liste Hotels</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="./MedNotifications.html">
+                        <a class="nav-link" href="MedNotifications.html">
                             <i class="nc-icon nc-bell-55"></i>
                             <p>Notifications</p>
                         </a>
@@ -164,7 +174,7 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#pablo">
+                                <a class="nav-link" id="deconnexion" onclick="deleteAllCookies()">
                                     <span class="no-icon">Se Déconnecter</span>
                                 </a>
                             </li>
@@ -176,53 +186,54 @@
             <div class="map-container">
                 <div id="map"></div>
             </div>
-            <footer class="footer">
-                <div class="container-fluid">
-                    <nav>
-                        <ul class="footer-menu">
-                            <li>
-                                <a href="#">
-                                    Home
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Company
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Portfolio
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Blog
-                                </a>
-                            </li>
-                        </ul>
-                        <p class="copyright text-center">
-                            ©
-                            <script>
-                                document.write(new Date().getFullYear())
-                            </script>
-                            <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
-                        </p>
-                    </nav>
-                </div>
-            </footer>
+            
         </div>
     </div>
-    <script>
-        var map, infoWindow;
 
-var data = '[{"id":2,"name":"Hotel Eiffel Blomet","latitude":48.841736,"longitude": 2.302336,"rating":4,"beds":9,"idM":null},{"id":2,"name":"Hôtel Delos Vaugirard Paris","latitude":48.841422,"longitude":2.302873,"rating":3,"beds":3,"idM":null}]';
-		
-        var posdoc = {
+    
+   <script>
+ 
+ /* var data2= getCookie("hotels");
+  var data3= getCookie("med");*/
+  var posdoc;
+  var map, infoWindow;
+  var data = '[{"id":2,"name":"Hotel Eiffel Blomet","latitude":48.841736,"longitude": 2.302336,"rating":4,"beds":9,"idM":null},'+
+       '{"id":2,"name":"Hôtel Delos Vaugirard Paris","latitude":48.841422,"longitude":2.302873,"rating":3,"beds":3,"idM":null},'+
+        	  '{"id":2,"name":"hotel ","latitude":48.842531,"longitude": 2.299694,"rating":3,"beds":3,"idM":null},'+
+        	  '{"id":2,"name":"hotel2 ","latitude":48.839086,"longitude": 2.298664,"rating":3,"beds":3,"idM":null},'+
+        	  '{"id":2,"name":"hotel3 ","latitude":48.840215,"longitude": 2.296390,"rating":2,"beds":4,"idM":null},'+
+        	  '{"id":2,"name":"hotel4 ","latitude":48.839622,"longitude": 2.302612,"rating":1,"beds":5,"idM":null}]';
+        
+  function distance(lat1, lon1, lat2, lon2, unit) {
+  	if ((lat1 == lat2) && (lon1 == lon2)) {
+  		return 0;
+  	}
+  	else {
+  		var radlat1 = Math.PI * lat1/180;
+  		var radlat2 = Math.PI * lat2/180;
+  		var theta = lon1-lon2;
+  		var radtheta = Math.PI * theta/180;
+  		var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+  		if (dist > 1) {
+  			dist = 1;
+  		}
+  		dist = Math.acos(dist);
+  		dist = dist * 180/Math.PI;
+  		dist = dist * 60 * 1.1515;
+  		if (unit=="K") { dist = dist * 1.609344 }
+  		if (unit=="N") { dist = dist * 0.8684 }
+  		return dist;
+  	}
+  }
+        
+       // obj2 = JSON.parse(data3); 
+       /*if(data3=='2')
+    	   {*/
+          posdoc = {
             lat: 48.842024, 
             lng: 2.300402
-        };
-
+          }
+    	//}
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
                 center: { lat: posdoc.lat, lng: posdoc.lng },
@@ -230,9 +241,17 @@ var data = '[{"id":2,"name":"Hotel Eiffel Blomet","latitude":48.841736,"longitud
             });
             infoWindow = new google.maps.InfoWindow;
 
-
             obj = JSON.parse(data);
-
+            var dis=distance(posdoc.lat, posdoc.lng, obj[0].latitude, obj[0].longitude, "k");
+            
+            for ($f = 1; $f < obj.length; $f++) 
+            {
+              if(dis > distance(posdoc.lat, posdoc.lng, obj[$f].latitude, obj[$f].longitude, "k"))
+              { 
+            	dis=distance(posdoc.lat, posdoc.lng, obj[$f].latitude, obj[$f].longitude, "k");
+              }
+            }
+          
             for ($i = 0; $i < obj.length; $i++) {
                 var marker = new google.maps.Marker({ position: { lat: obj[$i].latitude, lng: obj[$i].longitude }, map: map });
                 var infowincontent = document.createElement('div');
@@ -263,24 +282,29 @@ var data = '[{"id":2,"name":"Hotel Eiffel Blomet","latitude":48.841736,"longitud
                 }
                 infowincontent.appendChild(document.createElement('br'));
 
-                var link = document.createElement('a');
-                link.setAttribute('id', 'link1');
-                link.setAttribute('onClick', 'getInfos();');
-                link.innerHTML = "RESERVER"
-                infowincontent.appendChild(link);
+                var link=document.createElement('a');
+				var param=encodeURIComponent(obj[$i].name);
+				var url="reserver.html?hotelName="+param;
+				link.setAttribute('href',url);
+				link.innerHTML="RESERVER";
+				infowincontent.appendChild(link);
                 let clone = infowincontent;
                 let markkclone = marker;
                 markkclone.addListener('click', function () {
                     infoWindow.setContent(clone);
                     infoWindow.open(map, markkclone);
                 });
+                
+              if(dis==distance(posdoc.lat, posdoc.lng, obj[$i].latitude, obj[$i].longitude, "k"))
+              {   
+            	 infoWindow.setContent(clone);
+				 infoWindow.open(map, markkclone);
+              }
             }
 
-
-
             infoWindow.setPosition(posdoc);
-            infoWindow.setContent('you are here');
-            infoWindow.open(map);
+            /*infoWindow.setContent('Vous êtes ici');
+            infoWindow.open(map);*/
             map.setCenter(posdoc);
         }
     </script>
@@ -297,8 +321,8 @@ var data = '[{"id":2,"name":"Hotel Eiffel Blomet","latitude":48.841736,"longitud
 
 <!--  Chartist Plugin  -->
 <script src="../assets/js/plugins/chartist.min.js"></script>
-<!--  Notifications Plugin    -->
-<script src="../assets/js/plugins/bootstrap-notify.js"></script>
+<!--  Notifications Plugin    
+<script src="../assets/js/plugins/bootstrap-notify.js"></script> -->
 <!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->
 <script src="../assets/js/light-bootstrap-dashboard.js?v=2.0.0 " type="text/javascript"></script>
 <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
