@@ -1,0 +1,28 @@
+@CHARSET "ISO-8859-1";
+#sideNav .nc-icon{
+			color:white;
+		}
+        a p{
+        	color:black;
+        }
+        input{
+        	background-color: #e5f7f4;
+        }
+        .logo a{
+        	color:black !important;
+        }
+        nav{
+         	background-color:#ffe59c !important;
+        }
+        nav a{
+        color:black !important;
+        }
+        li .nc-icon{
+        	color:red;
+        }
+        input{
+        	    background-color: #e2f5ff !important;
+        }
+        tbody tr:nth-child(odd){
+        	background-color: #e2f5ff !important;
+        }

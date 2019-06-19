@@ -9,7 +9,7 @@ public class Patient  extends BaseUser   implements Serializable   {
 	private static final long serialVersionUID = 1L;
 
 	
-	private Long idM;
+	private Long id;
 	private String FirstName;
 	private String LastName;
 	private String Address;
@@ -21,7 +21,7 @@ public class Patient  extends BaseUser   implements Serializable   {
 	}
 	public Patient(Long idM)
 	{
-		this.idM=idM;
+		this.id=idM;
 	}
 	public Patient(String firstName, String lastName, String address, Long phone, Date birthday) {
 		super();
@@ -35,7 +35,7 @@ public class Patient  extends BaseUser   implements Serializable   {
 	
 	public Patient(Long idM, String firstName, String lastName, String address, Long phone, Date birthday) {
 		super();
-		this.idM = idM;
+		this.id = idM;
 		FirstName = firstName;
 		LastName = lastName;
 		Address = address;
@@ -72,9 +72,17 @@ public class Patient  extends BaseUser   implements Serializable   {
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
+	
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long idM) {
+		this.id = idM;
+	}
 	@Override
 	public String toString() {
-		return "Patient [idM=" + idM + ", FirstName=" + FirstName + ", LastName=" + LastName + ", Address=" + Address
+		return "Patient [idM=" + id + ", FirstName=" + FirstName + ", LastName=" + LastName + ", Address=" + Address
 				+ ", phone=" + phone + ", birthday=" + birthday + "]";
 	}
 	

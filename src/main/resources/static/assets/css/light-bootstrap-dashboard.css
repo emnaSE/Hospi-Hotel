@@ -592,7 +592,7 @@ body>.navbar-collapse:after {
     background: -webkit-linear-gradient(top, #9368E9 0%, #943bea 100%);
     background: -o-linear-gradient(top, #9368E9 0%, #943bea 100%);
     background: -ms-linear-gradient(top, #9368E9 0%, #943bea 100%);
-    background: linear-gradient(to bottom, #9368E9 0%, #943bea 100%);
+    background: linear-gradient(to bottom, #0596de 0%, #2b9ad2 100%);
     background-size: 150% 150%;
     z-index: 3;
     opacity: 1;

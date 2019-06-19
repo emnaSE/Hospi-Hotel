@@ -11,9 +11,9 @@ import us.sqoin.hotpital.modal.Hotel;
 @RestController
 public class HotelWebService {
 	
-	@GetMapping("/getHotel")
+	@GetMapping("/getHotels")
 	public List<Hotel> getHotel() {	
-		return HotelGenerator.getDefaultHotels();
+		return HotelGenerator.getDefaultsHotels();
 
 	}	
 

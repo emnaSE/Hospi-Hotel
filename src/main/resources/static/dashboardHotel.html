@@ -6,7 +6,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Light Bootstrap Dashboard - Free Bootstrap 4 Admin Dashboard by Creative Tim</title>
+    <title>Hospi-Hotel</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
         name='viewport' />
     <!--     Fonts and icons     -->
@@ -17,6 +17,7 @@
     <link href="../assets/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/css/demo.css" rel="stylesheet" />
+    <link href="../assets/css/design.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -30,14 +31,14 @@
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="http://www.creative-tim.com" class="simple-text">
-                        Creative Tim
+                        Hospi-Hotel
                     </a>
                 </div>
-                <ul class="nav">
+                <ul class="nav" id="sideNav">
                     <li class="nav-item active">
                         <a class="nav-link" href="dashboardHotel.html">
                             <i class="nc-icon nc-chart-pie-35"></i>
-                            <p>Dashboard</p>
+                            <p>Tableau de bord</p>
                         </a>
                     </li>
                     <li>
@@ -47,7 +48,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="Réservations.html">
+                        <a class="nav-link" href="Reservations.html">
                             <i class="nc-icon nc-notes"></i>
                             <p>List Réservations</p>
                         </a>
@@ -59,7 +60,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="notifications.html">
+                        <a class="nav-link" href="HotNotifications.html">
                             <i class="nc-icon nc-bell-55"></i>
                             <p>Notifications</p>
                         </a>
@@ -72,7 +73,7 @@
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg " color-on-scroll="500">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#pablo"> Dashboard </a>
+                    <a class="navbar-brand" href="#pablo">Tableau De Bord</a>
                     <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                         aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar burger-lines"></span>
@@ -84,7 +85,7 @@
                             <li class="nav-item">
                                 <a href="#" class="nav-link" data-toggle="dropdown">
                                     <i class="nc-icon nc-palette"></i>
-                                    <span class="d-lg-none">Dashboard</span>
+                                    <span class="d-lg-none">Tableau De Bord</span>
                                 </a>
                             </li>
                             <li class="dropdown nav-item">
@@ -104,21 +105,21 @@
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     <i class="nc-icon nc-zoom-split"></i>
-                                    <span class="d-lg-block">&nbsp;Search</span>
+                                    <span class="d-lg-block">&nbsp;Rechercher</span>
                                 </a>
                             </li>
                         </ul>
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
                                 <a class="nav-link" href="#pablo">
-                                    <span class="no-icon">Account</span>
+                                    <span class="no-icon">Compte</span>
                                 </a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="http://example.com"
                                     id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
                                     aria-expanded="false">
-                                    <span class="no-icon">Dropdown</span>
+                                    <span class="no-icon">Info</span>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     <a class="dropdown-item" href="#">Action</a>
@@ -130,8 +131,8 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#pablo">
-                                    <span class="no-icon">Log out</span>
+                                <a class="nav-link" id="deconnexion" onclick="deleteAllCookies()">
+                                    <span class="no-icon">Se Déconnecter</span>
                                 </a>
                             </li>
                         </ul>
