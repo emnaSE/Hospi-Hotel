@@ -17,6 +17,7 @@
     <link href="../assets/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/css/demo.css" rel="stylesheet" />
+    <link href="../assets/css/design.css" rel="stylesheet" />
     <script src="../assets/js/cookies.js"></script>
     <script src="../assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
 </head>
@@ -35,7 +36,7 @@
                         Hospi-Hotel
                     </a>
                 </div>
-                <ul class="nav">
+                <ul class="nav" id="sideNav">
                     <li>
                         <a class="nav-link" href="dashboardMed.html">
                             <i class="nc-icon nc-chart-pie-35"></i>
@@ -161,27 +162,7 @@
                                             <th>Nombre de lits</th>
                                         </thead>
                                         <tbody id="tableBody">
-                                            <tr>
-                                                <td>Hotel Darcet</td>
-                                                <td>Mouadh</td>
-                                                <td>14/06/2019</td>
-                                                <td>25/06/2019</td>
-                                                <td>2</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Hotel de L'Union</td>
-                                                <td>Ismail</td>
-                                                <td>14/06/2019</td>
-                                                <td>25/06/2019</td>
-                                                <td>2</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Hotel du Printemps</td>
-                                                <td>Hossam</td>
-                                                <td>14/06/2019</td>
-                                                <td>25/06/2019</td>
-                                                <td>2</td>
-                                            </tr>
+                                            
                                             
                                         </tbody>
                                     </table>
@@ -291,30 +272,30 @@
 	        success: function(data)
 	        {
 	          reservations=JSON.stringify(data);
-	           alert(reservations);
 	           reservations = JSON.parse(reservations);
 	   			fillTable();
 	        }
 	      });
 		function fillTable(){
-			alert("Nom Hotel ="+reservations.nomHotel);
+			for(var i=0;i<reservations.length;i++){
 				var tr = document.createElement('tr')
 				var td1 = document.createElement('td');
-				td1.textContent=reservations.nomHotel;
+				td1.textContent=reservations[i].nomHotel;
 				tr.append(td1);
 				var td2 = document.createElement('td');
-				td2.textContent=reservations.nomPatient;
+				td2.textContent=reservations[i].nomPatient;
 				tr.append(td2);
 				var td3 = document.createElement('td');
-				td3.textContent=reservations.date_Deb;
+				td3.textContent=reservations[i].date_Deb;
 				tr.append(td3);
 				var td4 = document.createElement('td');
-				td4.textContent=reservations.date_Fin;
+				td4.textContent=reservations[i].date_Fin;
 				tr.append(td4);
 				var td5 = document.createElement('td');
-				td5.textContent=reservations.nb_lits_res;
+				td5.textContent=reservations[i].nb_lits_res;
 				tr.append(td5);
 				$('#tableBody').append(tr);
+			}
 		}
 	
 		

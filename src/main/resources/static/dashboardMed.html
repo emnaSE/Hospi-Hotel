@@ -17,6 +17,7 @@
     <link href="../assets/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/css/demo.css" rel="stylesheet" />
+    <link href="../assets/css/design.css" rel="stylesheet" />
     <script src="assets/js/cookies.js"></script>
     <style>
         /* Always set the map height explicitly to define the size of the div
@@ -36,6 +37,13 @@
         #lit {
             color: green;
         }
+         #hotelName{
+	   font-weight:bold;
+	  }
+     #km{
+	  font-weight:bold;
+	  }
+        
 
         /* Optional: Makes the sample page fill the window. */
         html,
@@ -58,7 +66,7 @@
 		#deconnexion:hover{
 			cursor: pointer;
 		}
-        
+		
     </style>
 </head>
 
@@ -76,7 +84,7 @@
                         Hospi-Hotel
                     </a>
                 </div>
-                <ul class="nav">
+                <ul class="nav" id="sideNav">
                     <li class="nav-item active">
                         <a class="nav-link" href="dashboardMed.html">
                             <i class="nc-icon nc-chart-pie-35"></i>
@@ -197,12 +205,10 @@
   var data3= getCookie("med");*/
   var posdoc;
   var map, infoWindow;
-  var data = '[{"id":2,"name":"Hotel Eiffel Blomet","latitude":48.841736,"longitude": 2.302336,"rating":4,"beds":9,"idM":null},'+
-       '{"id":2,"name":"Hôtel Delos Vaugirard Paris","latitude":48.841422,"longitude":2.302873,"rating":3,"beds":3,"idM":null},'+
-        	  '{"id":2,"name":"hotel ","latitude":48.842531,"longitude": 2.299694,"rating":3,"beds":3,"idM":null},'+
-        	  '{"id":2,"name":"hotel2 ","latitude":48.839086,"longitude": 2.298664,"rating":3,"beds":3,"idM":null},'+
-        	  '{"id":2,"name":"hotel3 ","latitude":48.840215,"longitude": 2.296390,"rating":2,"beds":4,"idM":null},'+
-        	  '{"id":2,"name":"hotel4 ","latitude":48.839622,"longitude": 2.302612,"rating":1,"beds":5,"idM":null}]';
+  var data = '[{"id":2,"name":"Hôtel du Lion","latitude":48.833401,"longitude":  2.331943,"rating":4,"beds":9,"idM":null},'+
+  '{"id":2,"name":"Hôtel FIAP Jean Monnet","latitude":48.830467,"longitude": 2.338070,"rating":3,"beds":3,"idM":null},'+
+   	  '{"id":2,"name":"Hôtel Boulevard Saint-Jacques ","latitude":48.831605, "longitude": 2.339771,"rating":3,"beds":3,"idM":null},'+
+   	  '{"id":2,"name":"Hôtel Ibis ","latitude":48.827423, "longitude": 2.321030,"rating":3,"beds":3,"idM":null}]';
         
   function distance(lat1, lon1, lat2, lon2, unit) {
   	if ((lat1 == lat2) && (lon1 == lon2)) {
@@ -229,11 +235,24 @@
        // obj2 = JSON.parse(data3); 
        /*if(data3=='2')
     	   {*/
-          posdoc = {
-            lat: 48.842024, 
-            lng: 2.300402
+         posdoc = {
+            lat: 48.837494,  
+            lng: 2.338900
           }
     	//}
+      var d=[];
+      d.push(1.5);
+      d.push(1.2);
+      d.push(1.4);
+      d.push(3.3);
+    	
+      
+      var icons = {
+    		   
+    		    hotel: {
+    		      icon: 'http://167.86.108.108:882/hotel-yellow.png'
+    		    }
+    		  };
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
                 center: { lat: posdoc.lat, lng: posdoc.lng },
@@ -253,10 +272,11 @@
             }
           
             for ($i = 0; $i < obj.length; $i++) {
-                var marker = new google.maps.Marker({ position: { lat: obj[$i].latitude, lng: obj[$i].longitude }, map: map });
+                var marker = new google.maps.Marker({ position: { lat: obj[$i].latitude, lng: obj[$i].longitude }, map: map,icon: icons['hotel'].icon });
                 var infowincontent = document.createElement('div');
                 infowincontent.setAttribute('id', 'info');
                 var strong = document.createElement('strong');
+                strong.setAttribute('id', 'hotelName');
                 strong.textContent = "" + obj[$i].name
                 infowincontent.appendChild(strong);
                 infowincontent.appendChild(document.createElement('br'));
@@ -282,6 +302,12 @@
                 }
                 infowincontent.appendChild(document.createElement('br'));
 
+                var text = document.createElement('text');
+                text.setAttribute('id', 'km');
+                text.textContent = "~"+d[$i]+" km loin de vous";
+                infowincontent.appendChild(text);
+                infowincontent.appendChild(document.createElement('br'));
+                
                 var link=document.createElement('a');
 				var param=encodeURIComponent(obj[$i].name);
 				var url="reserver.html?hotelName="+param;
@@ -307,6 +333,7 @@
             infoWindow.open(map);*/
             map.setCenter(posdoc);
         }
+        //$.when(intialisation()).then(initMap());
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap">
     </script>
