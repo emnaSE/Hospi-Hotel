@@ -17,6 +17,7 @@
     <link href="../assets/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/css/demo.css" rel="stylesheet" />
+    <link href="../assets/css/design.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -33,7 +34,7 @@
                         Hospi-Hotel
                     </a>
                 </div>
-                <ul class="nav">
+                <ul class="nav" id="sideNav">
                     <li>
                         <a class="nav-link" href="dashboardMed.html">
                             <i class="nc-icon nc-chart-pie-35"></i>
@@ -131,7 +132,7 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#pablo">
+                                <a class="nav-link" id="deconnexion" onclick="deleteAllCookies()">
                                     <span class="no-icon">Se Déconnecter</span>
                                 </a>
                             </li>

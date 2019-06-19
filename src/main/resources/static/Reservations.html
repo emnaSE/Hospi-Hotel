@@ -17,6 +17,7 @@
     <link href="../assets/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/css/demo.css" rel="stylesheet" />
+    <link href="../assets/css/design.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -33,7 +34,7 @@
                 Hospi-Hotel
             </a>
         </div>
-        <ul class="nav">
+        <ul class="nav" id="sideNav">
             <li>
                 <a class="nav-link" href="dashboardHotel.html">
                     <i class="nc-icon nc-chart-pie-35"></i>
@@ -59,7 +60,7 @@
                 </a>
             </li>
             <li>
-                <a class="nav-link" href="notifications.html">
+                <a class="nav-link" href="HotNotifications.html">
                     <i class="nc-icon nc-bell-55"></i>
                     <p>Notifications</p>
                 </a>
@@ -72,7 +73,7 @@
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg " color-on-scroll="500">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#pablo"> Table List </a>
+                    <a class="navbar-brand" href="#pablo">Tableau De Bord</a>
                     <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                         aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar burger-lines"></span>
@@ -84,7 +85,7 @@
                             <li class="nav-item">
                                 <a href="#" class="nav-link" data-toggle="dropdown">
                                     <i class="nc-icon nc-palette"></i>
-                                    <span class="d-lg-none">Tableau de bord</span>
+                                    <span class="d-lg-none">Tableau De Bord</span>
                                 </a>
                             </li>
                             <li class="dropdown nav-item">
@@ -104,21 +105,21 @@
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     <i class="nc-icon nc-zoom-split"></i>
-                                    <span class="d-lg-block">&nbsp;Search</span>
+                                    <span class="d-lg-block">&nbsp;Rechercher</span>
                                 </a>
                             </li>
                         </ul>
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
                                 <a class="nav-link" href="#pablo">
-                                    <span class="no-icon">Account</span>
+                                    <span class="no-icon">Compte</span>
                                 </a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="http://example.com"
                                     id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
                                     aria-expanded="false">
-                                    <span class="no-icon">Dropdown</span>
+                                    <span class="no-icon">Info</span>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     <a class="dropdown-item" href="#">Action</a>
@@ -130,8 +131,8 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#pablo">
-                                    <span class="no-icon">Log out</span>
+                                <a class="nav-link" id="deconnexion" onclick="deleteAllCookies()">
+                                    <span class="no-icon">Se Déconnecter</span>
                                 </a>
                             </li>
                         </ul>
@@ -152,54 +153,40 @@
                                 <div class="card-body table-full-width table-responsive">
                                     <table class="table table-hover">
                                         <thead>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Salary</th>
-                                            <th>Country</th>
-                                            <th>City</th>
+                                            <th>Nom Medecin</th>
+                                            <th>Nom Patient</th>
+                                            <th>Date début</th>
+                                            <th>Date Fin</th>
+                                            <th>Nombre de lit</th>
                                         </thead>
                                         <tbody>
                                             <tr>
+                                                <td>Mostafa</td>
+                                                <td>Fadia</td>
+                                                <td>22-06-2019</td>
+                                                <td>27-06-2019</td>
                                                 <td>1</td>
-                                                <td>Dakota Rice</td>
-                                                <td>$36,738</td>
-                                                <td>Niger</td>
-                                                <td>Oud-Turnhout</td>
                                             </tr>
                                             <tr>
+                                                <td>Mouadh</td>
+                                                <td>Mohamed</td>
+                                                <td>21-06-2019</td>
+                                                <td>22-06-2019</td>
                                                 <td>2</td>
-                                                <td>Minerva Hooper</td>
-                                                <td>$23,789</td>
-                                                <td>Curaçao</td>
-                                                <td>Sinaai-Waas</td>
                                             </tr>
                                             <tr>
-                                                <td>3</td>
-                                                <td>Sage Rodriguez</td>
-                                                <td>$56,142</td>
-                                                <td>Netherlands</td>
-                                                <td>Baileux</td>
+                                                <td>Amina</td>
+                                                <td>Manal</td>
+                                                <td>27-06-2019</td>
+                                                <td>30-06-2019</td>
+                                                <td>2</td>
                                             </tr>
                                             <tr>
-                                                <td>4</td>
-                                                <td>Philip Chaney</td>
-                                                <td>$38,735</td>
-                                                <td>Korea, South</td>
-                                                <td>Overland Park</td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Doris Greene</td>
-                                                <td>$63,542</td>
-                                                <td>Malawi</td>
-                                                <td>Feldkirchen in Kärnten</td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>
-                                                <td>Mason Porter</td>
-                                                <td>$78,615</td>
-                                                <td>Chile</td>
-                                                <td>Gloucester</td>
+                                                <td>Amine</td>
+                                                <td>Housam</td>
+                                                <td>30-06-2019</td>
+                                                <td>03-07-2019</td>
+                                                <td>1</td>
                                             </tr>
                                         </tbody>
                                     </table>
