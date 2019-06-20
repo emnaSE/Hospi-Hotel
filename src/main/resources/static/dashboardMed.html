@@ -195,7 +195,32 @@
             
         </div>
     </div>
+    
+    
+<script>
+   /*var hotel;
+    
+    function intialisation(){
+	    $.ajax({
+	           type: "GET",
+	           url: "http://localhost:8080/getMedecin", //use idMedcin instead of 2
+	           type : 'GET',
+	           data : 'id=' + 2,
+	           success: function(data)
+	           {          
+	              /*setCookie("hotels",JSON.stringify(data.hotels), 2);
+	              setCookie("med",JSON.stringify(data.id), 2);*/
+	            /* hotel=JSON.stringify(data.hotels);
+	              //alert("message1"+hotel);
+	           },
+	    error: function (jqXHR, status, err) {
+	        alert("une erreur c'est produit réessayer");
+	      }
+	         });
+    }*/
 
+
+</script>
     
    <script>
  
@@ -251,6 +276,20 @@
     		      icon: 'http://167.86.108.108:882/hotel-yellow.png'
     		    }
     		  };
+      
+      /*if(hotel== null)
+      {
+    	  intialisation();
+      }
+      
+      try {
+    	  intialisation();
+    	}
+    	catch(err) {
+    		alert("une erreur c'est produit réessayer");
+    	}*/
+      
+      
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
                 center: { lat: posdoc.lat, lng: posdoc.lng },
@@ -331,7 +370,7 @@
             infoWindow.open(map);*/
             map.setCenter(posdoc);
         }
-        //$.when(intialisation()).then(initMap());
+       //$.when(intialisation()).then(initMap());
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap">
     </script>

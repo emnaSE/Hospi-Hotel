@@ -332,11 +332,10 @@ function all(){
             infoWindow = new google.maps.InfoWindow;
             var point_a = new google.maps.LatLng( 48.837494, 2.338900 );
           
-            //alert(hotel);
+            alert(hotel);
             //obj = JSON.parse(hotel);
             
            obj = JSON.parse(data);
-          //  obj2 = JSON.parse(hotels); 
             
             var dis=distance(posdoc.lat, posdoc.lng, obj[0].latitude, obj[0].longitude, "k");
             
