@@ -276,6 +276,27 @@
 
  jQuery(document).ready(function(){
 	 /***********/
+	$('form').submit(function(e){
+			e.preventDefault();
+			alert("hello");
+		    var form = $(this);
+		    var url = form.attr('action');
+
+		    $.ajax({
+		           type: "GET",
+		           url: url,
+		           data: form.serialize(),
+		           success: function(data)
+		           {
+		        	   alert("hello");
+		        	   form.last().css( "background-color", "blue" );
+		        	   form.last().html( "Annulé" );
+		        	   $('#succes').css('display','block');
+		           }
+		         });
+
+		});
+	 /**************/
 		var reservations;
 		var acookie = getCookieByName("userInfo");
 		$.ajax({
@@ -290,24 +311,7 @@
 	   			fillTable();
 	        }
 	      });
-		$(".formAnnul").submit(function(e) {
-		    e.preventDefault(); 
-		    var form = $(this);
-		    var url = form.attr('action');
-
-		    $.ajax({
-		           type: "GET",
-		           url: url,
-		           data: form.serialize(),
-		           success: function(data)
-		           {
-		        	   form.last().css( "background-color", "blue" );
-		        	   form.last().html( "Annulé" );
-		        	   $('#succes').css('display','block');
-		           }
-		         });
-
-		});
+		
 		function fillTable(){
 			for(var i=0;i<reservations.length;i++){
 				var tr = document.createElement('tr')
@@ -328,18 +332,21 @@
 				tr.append(td5);
 				var td6 = document.createElement('td');
 				switch (reservations[i].etat) {
-				case '1': 
-					td6.textContent="Accepted";
+				case 1:
+					var button= $('<button type="button" style="background-color:#d8d214;border-radius:5px;pointer-events:none">Accepté</button>');
+					button.appendTo(td6);
 					break;
-				case '2': 
-					td6.textContent="Refused";
+				case 2:
+					var button= $('<button type="button" style="background-color:#d8d214;border-radius:5px;disabled:true;pointer-events:none">Refusé</button>');
+					button.appendTo(td6);
 					break;
-				case '3': 
-					td6.textContent="Annulé";
+				case 3:
+					var button= $('<button type="button" style="background-color:#d8d214;border-radius:5px;disabled:true;pointer-events:none">Annulé</button>');
+					button.appendTo(td6);
 					break;
 				default:
-					var form=$('<form method="GET" class="formAnnul" action="/AnnulerRes"></form>');
-					var hiddenId=$('<input type="text" style="display:none" name="idRes" value="'+reservations[i].id+'">');
+					var form=$('<form method="GET" class="formAnnul" action="/EtatCancelled"></form>');
+					var hiddenId=$('<input type="text" style="display:none" name="id" value="'+reservations[i].id+'">');
 					var button= $('<button type="submit" style="background-color:#d8d214;border-radius:5px">En cours</button>');
 					hiddenId.appendTo(form);
 					button.appendTo(form);
