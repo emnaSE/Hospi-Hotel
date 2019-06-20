@@ -1,6 +1,7 @@
 package us.sqoin.hotpital;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -64,6 +65,44 @@ public class ReservationWebService {
 	public List<Reservation> getResevationbyPatientName(String name) {
 	
 		return ReservateGenerator.getReservationByNamePatient(name);
+	}
+	
+	@GetMapping("/getReservationsorderbyAsc")
+	public List<Reservation> getOrderedResbyAsc() {
+		
+   return  ReservateGenerator.SortListReservationsByDateAsc();
+
+	}
+	
+	@GetMapping("/getReservationsorderbyDesc")
+	public List<Reservation> getOrderedResbyDesc() {
+		
+   return  ReservateGenerator.SortListReservationsByDateDesc();
+		
+		
+	}
+	@GetMapping("/EtatCancelled")
+	public boolean switchetattocancel(int id) {
+		
+   return  ReservateGenerator.ReservationCancelledByMed(id);
+		
+		
+	}
+	
+	@GetMapping("/EtatAccepted")
+	public boolean switchetattoaccept(int id) {
+		
+   return  ReservateGenerator.ReservationAcceptedByHot(id);
+		
+		
+	}
+	
+	@GetMapping("/EtatRefused")
+	public boolean switchetattorefuse(int id) {
+		
+   return  ReservateGenerator.ReservationRefusedByHot(id);
+		
+		
 	}
 
 	
