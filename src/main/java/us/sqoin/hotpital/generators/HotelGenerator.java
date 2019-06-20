@@ -23,14 +23,16 @@ public class HotelGenerator {
 	private static List<Hotel> ListHo= new ArrayList<Hotel>();
 	
 	static {
-		hotel1 = new Hotel(2L, "Hôtel du Lion",48.833401, 2.331943, 3, 9);
-		hotel2 = new Hotel(3L, "Hôtel FIAP Jean Monnet",36.882129, 10.191244, 3, 3);
+		hotel1 = new Hotel(1L, "Hôtel du Lion",48.833401, 2.331943, 3, 110);
+		hotel2 = new Hotel(2L, "Hôtel FIAP Jean Monnet",48.830467, 2.338070, 3, 3);
 		
-		hotel3 = new Hotel(2L, "Hotel Mouradi",36.882129, 10.188843, 3, 9);
-		hotel4 = new Hotel(3L, "Hotel Marhba",36.882129, 10.191244, 3, 3);
+		hotel3 = new Hotel(3L, "Hôtel Boulevard Saint-Jacques",48.831605,2.339771, 1, 22);
+		hotel4 = new Hotel(4L, "Hôtel Ibis",48.827423, 2.321030, 4, 43);
 	
 		ListHo.add(hotel1);
 		ListHo.add(hotel2);
+		ListHo.add(hotel3);
+		ListHo.add(hotel4);
 		//Md1 = new Medecin(4L, "Zarrouk", "Moncef", "Cardiologie");
 		
 	//	((Hotel) hotel1).setIdM(Md1.getIdM());

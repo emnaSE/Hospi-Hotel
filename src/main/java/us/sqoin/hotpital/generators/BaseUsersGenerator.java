@@ -23,7 +23,7 @@ public class BaseUsersGenerator {
 		user3 = new BaseUser(3l, "Ben Abdallah", "azerty", "P",0);
 		user4 = new BaseUser(4l, "Ben mohamed", "Tun12", "P",0);
 		user5 = new BaseUser(5l, "karray", "Tun12", "M",0);
-		user6 = new BaseUser(6l, "Foulen", "azerty1234", "p",0);
+		user6 = new BaseUser(6l, "Foulen", "azerty1234", "P",0);
 
 	}
 
