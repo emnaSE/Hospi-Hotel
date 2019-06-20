@@ -1,6 +1,9 @@
 package us.sqoin.hotpital.modal;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Reservation implements Serializable {
@@ -15,19 +18,22 @@ public class Reservation implements Serializable {
     private String nomPatient;
     private String nomMed;
     private int nb_lits_res;
-    private Date Date_Deb;
-    private Date Date_Fin;
+    private Date x;
+    private Date y;
     private int etat=0;
-    //to add date debut et datefin 
- 	//to function add reservation non compelete elle prend tout l'id return la liste de notification pour un id 
+    
+    private String Date_Deb;
+    private String Date_Fin;
+   
+    
     
     public Reservation()
     {
     	
     }
 
-	public Reservation(Long id, String nomHotel, String nomPatient, String nomMed, int nb_lits_res, Date date_Deb,
-			Date date_Fin ,int etat) {
+	public Reservation(Long id, String nomHotel, String nomPatient, String nomMed, int nb_lits_res, Date x,
+			Date y ,int etat) {
 /*
 		super();
 		this.id = id;
@@ -45,24 +51,40 @@ public class Reservation implements Serializable {
 		this.nomPatient = nomPatient;
 		this.nomMed = nomMed;
 		this.nb_lits_res = nb_lits_res;
-		Date_Deb = date_Deb;
-		Date_Fin = date_Fin;
+		this.x = x;
+		this.y = y;
 		this.etat = etat;
 	}
 
-	public Reservation(Long id2, String nomHotel2, String nomPatient2, String nomMed2, int nb_lits_res2, Date dd,
-			Date ff) {
+	public Reservation(Long id2, String nomHotel2, String nomPatient2, String nomMed2, int nb_lits_res2, Date x,
+			Date y) {
 		super();
 		this.id = id2;
 		this.nomHotel = nomHotel2;
 		this.nomPatient = nomPatient2;
 		this.nomMed = nomMed2;
 		this.nb_lits_res = nb_lits_res2;
-		Date_Deb = dd;
-		Date_Fin = ff;
+		this.x = x;
+		this.y = y;
 		etat =0;
 
 
+	}
+	
+
+	public Reservation(Long id, String nomHotel, String nomPatient, String nomMed, int nb_lits_res, Date x,
+			Date y , int etat, String Date_Deb, String Date_Fin) {
+		super();
+		this.id = id;
+		this.nomHotel = nomHotel;
+		this.nomPatient = nomPatient;
+		this.nomMed = nomMed;
+		this.nb_lits_res = nb_lits_res;
+		this.x = x;
+		this.y = y;
+		this.etat = etat;
+		this.Date_Deb = Date_Deb;
+		this.Date_Fin = Date_Fin;
 	}
 
 	public Long getId() {
@@ -105,23 +127,41 @@ public class Reservation implements Serializable {
 		this.nb_lits_res = nb_lits_res;
 	}
 
-	public Date getDate_Deb() {
+
+
+	
+	public Date getX() {
+		return x;
+	}
+
+	public void setX(Date x) {
+		this.x = x;
+	}
+
+	public Date getY() {
+		return y;
+	}
+
+	public void setY(Date y) {
+		this.y = y;
+	}
+
+	public String getDate_Deb() {
 		return Date_Deb;
 	}
 
-	public void setDate_Deb(Date date_Deb) {
+	public void setDate_Deb(String date_Deb) {
 		Date_Deb = date_Deb;
 	}
 
-	public Date getDate_Fin() {
+	public String getDate_Fin() {
 		return Date_Fin;
 	}
 
-	public void setDate_Fin(Date date_Fin) {
+	public void setDate_Fin(String date_Fin) {
 		Date_Fin = date_Fin;
 	}
 
-	
 	public int getEtat() {
 		return etat;
 	}
@@ -136,6 +176,10 @@ public class Reservation implements Serializable {
 				+ ", nb_lits_res=" + nb_lits_res + ", Date_Deb=" + Date_Deb + ", Date_Fin=" + Date_Fin + "]";
 	}
     
+	
+	
+
+	
 	
     
     
