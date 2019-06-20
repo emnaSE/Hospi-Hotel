@@ -35,9 +35,24 @@ public class MedecinGenerator {
 	}
 	
 
+	public static List<Hotel> getHotelByIdMed(int id) {
+		
+		List<Medecin> arf = getDefaultMedecins();
+		List<Hotel> bingo = new ArrayList<Hotel>();
+		for (Medecin s : arf) {
+			if(s.getId()==id )
+			{
+				bingo.addAll(s.getHotels());
+				return bingo;
+			}
+		}	
+		return null;	
+	}
+	
 	public static List<Medecin> getDefaultMedecins() {
 		return Medecins;
 	}
+	
 	//add patient to mdecin
 	public static Medecin addPatientToMedecin(Patient Pa,int id)
 	{

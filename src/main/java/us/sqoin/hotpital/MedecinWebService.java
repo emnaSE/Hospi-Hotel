@@ -54,6 +54,13 @@ public class MedecinWebService {
 		return MedecinGenerator.addPatientToMedecin(p, id);
 	}
 	
+	@GetMapping("/getListHotelsByIdMed")
+	public List<Hotel> getListHotelByIdMed(int id)
+	{
+		return MedecinGenerator.getHotelByIdMed(id);
+	}
+	
+	
 	
 	
 	
