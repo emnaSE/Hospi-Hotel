@@ -55,20 +55,46 @@
 	    	}
 	    });*/
 	    $('form').submit(function(e){
+	    	e.preventDefault(); 
+	    	var form = $(this);
+	    	var url = form.attr('action');
 	    	var dateDeb = new Date($('#dateDeb').val());
 	    	var dateFin = new Date($('#dateFin').val());
 	    	//alert(dateDeb.getTime()+" "+dateFin.getTime());
+	    	//var patient=$('[name="NomPatient"]').val();
+	    	var patient=$( "input[name='nomPatient']" ).val();
+	    	var hotel=$( "input[name='nomHotel']" ).val();
+	    	var medecin=$( "input[name='nomMed']" ).val();
+	    	var lits=$("input[name='nb_lits_res']:checked").val();
+	    	
 	    	var valid=validateResDate(dateDeb,dateFin);
-	    	if(valid==false){
-	    		e.preventDefault();
+	    	if(valid==false || patient=="" || hotel=='undefined' || lits==null ){
 	    		$('#fail').css('display','block');
+	    		$('#succes').css('display','none');
 	    	}else{
-	    		$('#succes').css('display','block');
-	    		$('#fail').css('display','none');
-	    		window.location.href ="dashboardMed.html";
+	    		$.ajax({
+		               type: "GET",
+		               url: url,
+		               data: form.serialize(),
+		               success: function(data)
+		               {
+		            	   	$('#succes').css('display','block');
+			   	    		$('#fail').css('display','none');
+		            	   	setTimeout(
+							  	function() 
+							  	{
+								  	window.location.href ="/dashboardMed.html";
+							 	}, 2000);
+		               	}
+		             	});
 	    	}
+	    	
+	    	
+	        
+	        
+	    	
 	    });
-	    
+	  
 	});
     
     
@@ -225,8 +251,7 @@
                                             <div class="col-md-3 px-1">
                                                 <div class="form-group">
                                                     <label>Nom Patient</label>
-                                                    <input type="text" class="form-control" name="nomPatient" placeholder="Nom Patient"
-                                                        >
+                                                    <input type="text" class="form-control" name="nomPatient" placeholder="Nom Patient" value="" >
                                                 </div>
                                             </div>
                                             

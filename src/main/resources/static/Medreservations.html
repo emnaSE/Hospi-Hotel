@@ -20,6 +20,13 @@
     <link href="../assets/css/design.css" rel="stylesheet" />
     <script src="../assets/js/cookies.js"></script>
     <script src="../assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
+    <style>
+    	.alert{
+    		display:none;
+    		width: 100%;
+    		text-align: center;
+    	}
+    </style>
 </head>
 
 <body>
@@ -151,6 +158,12 @@
                                 <div class="card-header ">
                                     <h4 class="card-title">Réservations en cours</h4>
                                     <p class="card-category">Réservations</p>
+                                    <div class="alert alert-success" role="alert" id="succes">
+									  La réservation a été Annulé avec succès !
+									</div>
+									<div class="alert alert-danger" role="alert" id="fail">
+									  Echec Lors de l'annulation de la réservation !
+									</div>
                                 </div>
                                 <div class="card-body table-full-width table-responsive">
                                     <table class="table table-hover table-striped">
@@ -160,6 +173,7 @@
                                             <th>Date Début</th>
                                             <th>Date Fin</th>
                                             <th>Nombre de lits</th>
+                                            <th>État</th>
                                         </thead>
                                         <tbody id="tableBody">
                                             
@@ -262,20 +276,38 @@
 
  jQuery(document).ready(function(){
 	 /***********/
-	var reservations;
-	
+		var reservations;
+		var acookie = getCookieByName("userInfo");
 		$.ajax({
 	        type: "GET",
 	        url: "/getOnlyoneReservationbyname",
 	        type : 'GET',
-	        data : 'name=Zarrouk',
+	        data : 'name='+JSON.parse(acookie).username,
 	        success: function(data)
 	        {
-	          reservations=JSON.stringify(data);
-	           reservations = JSON.parse(reservations);
+	          	reservations=JSON.stringify(data);
+	           	reservations = JSON.parse(reservations);
 	   			fillTable();
 	        }
 	      });
+		$(".formAnnul").submit(function(e) {
+		    e.preventDefault(); 
+		    var form = $(this);
+		    var url = form.attr('action');
+
+		    $.ajax({
+		           type: "GET",
+		           url: url,
+		           data: form.serialize(),
+		           success: function(data)
+		           {
+		        	   form.last().css( "background-color", "blue" );
+		        	   form.last().html( "Annulé" );
+		        	   $('#succes').css('display','block');
+		           }
+		         });
+
+		});
 		function fillTable(){
 			for(var i=0;i<reservations.length;i++){
 				var tr = document.createElement('tr')
@@ -294,6 +326,33 @@
 				var td5 = document.createElement('td');
 				td5.textContent=reservations[i].nb_lits_res;
 				tr.append(td5);
+				var td6 = document.createElement('td');
+				switch (reservations[i].etat) {
+				case '1': 
+					td6.textContent="Accepted";
+					break;
+				case '2': 
+					td6.textContent="Refused";
+					break;
+				case '3': 
+					td6.textContent="Annulé";
+					break;
+				default:
+					var form=$('<form method="GET" class="formAnnul" action="/AnnulerRes"></form>');
+					var hiddenId=$('<input type="text" style="display:none" name="idRes" value="'+reservations[i].id+'">');
+					var button= $('<button type="submit" style="background-color:#d8d214;border-radius:5px">En cours</button>');
+					hiddenId.appendTo(form);
+					button.appendTo(form);
+					form.appendTo(td6);
+					button.mouseenter(function() {
+					    $(this).html("Annuler");
+					    $(this).css("background-color", "#75ff3b");
+					}).mouseleave(function() {
+						$(this).html("En cours");
+						$(this).css("background-color", "#d8d214");
+					});
+				}
+				tr.append(td6);
 				$('#tableBody').append(tr);
 			}
 		}
