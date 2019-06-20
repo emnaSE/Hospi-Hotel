@@ -392,25 +392,32 @@
 	        	
 	        	console.log(date.toLocaleDateString());
 	        	
-	          reservations=JSON.stringify(data);
-	           console.log(reservations);
-	           reservations = JSON.parse(reservations);
-	           var rv =reservations[i].date_Deb;
-	          
-	           var nowDate = new Date(parseInt(rv.substr(6)));
-	           var result = nowDate.format("dd/mm/yyyy");
-	           
-	           
-	           console.log(rv);
-	           console.log(result);
-	           
-	           for(i=0;i<reservations.length; i++)
-               {
-	        	   if(result=="01/01/1970")
-	        		   {
-	          // $.notify("Nouvelle reservation du Dr :"+reservations[i].nomMed+ "\n Pour le patient:"+reservations[i].nomPatient+"\n Nombre delit:"+reservations[i].nb_lits_res, "info");
-	        		   }
-               }
+	        	 reservations=JSON.stringify(data);
+		           console.log(reservations);
+		           reservations = JSON.parse(reservations);
+		          
+		           var rv =reservations[i].date_Deb;
+		          
+		          
+		           var result = date.format("yyyy-mm-dd");
+		           
+		           
+		           console.log(rv);
+		           console.log(result);
+		           
+		           for(i=0;i<reservations.length; i++)
+	               {
+		        	   $('#notify').html(reservations[i].nomMed);
+
+		        	   $('#nomp').html(reservations[i].nomPatient);
+		        	   $('#nblit').html(reservations[i].nb_lits_res);
+		        	   if(result==rv){
+		        	
+		        	   $.notify("Nouvelle reservation du Dr :"+reservations[i].nomMed+ "\n Pour le patient:"+reservations[i].nomPatient+"\n Nombre delit:"+reservations[i].nb_lits_res, "Info");
+		        	   } 
+		        		  
+	               }
+		           
 	   			fillTable();
 	        }
 	      });

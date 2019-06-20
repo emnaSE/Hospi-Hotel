@@ -223,8 +223,8 @@
 	          
 	           var rv =reservations[i].date_Deb;
 	          
-	           var nowDate = new Date(parseInt(rv.substr(6)));
-	           var result = nowDate.format("dd/mm/yyyy");
+	          
+	           var result = date.format("yyyy-mm-dd");
 	           
 	           
 	           console.log(rv);
@@ -236,10 +236,10 @@
 
 	        	   $('#nomp').html(reservations[i].nomPatient);
 	        	   $('#nblit').html(reservations[i].nb_lits_res);
-	        	   
+	        	   if(result==rv){
 	        	
 	        	  // $.notify("Nouvelle reservation du Dr :"+reservations[i].nomMed+ "\n Pour le patient:"+reservations[i].nomPatient+"\n Nombre delit:"+reservations[i].nb_lits_res, "Info");
-	        	   
+	        	   }  
 	        		  
                }
 	           
@@ -261,7 +261,7 @@
                  buton.append(i);
                 infowincontent.append(buton);
                var informations=document.createElement('span');
-               informations.textContent = "Nouvelle reservation du docteur Mr \n:" +reservations[u].nomMed +"\n De\n"+reservations[u].nb_lits_res+"\n Lit\n Pour le Patient \n"+reservations[u].nomPatient;
+               informations.textContent = "Nouvelle reservation du docteur Mr \n:" +reservations[u].nomMed +"\n De\n"+reservations[u].nb_lits_res+"\n Lit\n Pour le Patient \n"+reservations[u].nomPatient+"\n du\n"+reservations[u].date_Deb+"\n au \n"+reservations[u].date_Fin;
                
                infowincontent.append(informations);
 				

@@ -295,7 +295,7 @@
 	           
 	           else if(reservations[u].etat==0)
         	   {
-var               infowincontent = document.createElement('div');
+          var infowincontent = document.createElement('div');
 		           
 	               infowincontent.setAttribute('class', 'alert alert-info');
 	               var buton = document.createElement('button');
@@ -319,6 +319,31 @@ var               infowincontent = document.createElement('div');
 	        	   
         	   }
 	           
+	           else if(reservations[u].etat==3)
+        	   {
+          var infowincontent = document.createElement('div');
+		           
+	               infowincontent.setAttribute('class', 'alert alert-danger');
+	               var buton = document.createElement('button');
+	               buton.setAttribute('class', 'close');
+	               buton.setAttribute('aria-hidden', 'true');
+	               buton.setAttribute('data-dismiss', 'alert');
+	               var i = document.createElement('i');
+	               i.setAttribute('class', 'nc-icon nc-simple-remove');
+	               
+	               //$('<div style="background-color:yellow;border-radius:5px">Pending</div>').appendTo(td6);
+	              
+	                 buton.append(i);
+	                infowincontent.append(buton);
+	               var informations=document.createElement('span');
+	               informations.textContent = "Votre réservation émis par le Docteur:\n"+reservations[u].nomMed+ "\n a été annuler... \n";
+	               
+	               infowincontent.append(informations);
+					
+	               $('#tableBody').append(infowincontent);
+	        	   
+	        	   
+        	   }
 	           
 	           
 	           
