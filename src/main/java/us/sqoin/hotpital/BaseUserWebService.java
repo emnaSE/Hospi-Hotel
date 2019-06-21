@@ -30,30 +30,10 @@ public class BaseUserWebService {
 				
 				r=s;
 				s.setStateLog(1);
-				System.out.println("Connected"+r);
-				if(s.getRole().equals("M"))
-				{
-					System.out.print("Medecin");
-					
-				}
-				else if (s.getRole().equals("P"))
-				{
-					System.out.print("Patient");
-				}
-				else if(s.getRole().equals("H"))
-				{
-					System.out.print("Hotel");
-				}
-				else
-				{
-					System.out.print("Unknown");
-
-				}
-			 return r;
+		
 			 
 			}
 		}
-		System.out.print("Not Connected");
 		return r;
 	
 		
