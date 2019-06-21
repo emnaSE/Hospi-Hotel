@@ -20,6 +20,13 @@
     <link href="../assets/css/design.css" rel="stylesheet" />
     <script src="../assets/js/cookies.js"></script>
     <script src="../assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
+    <style>
+    	.alert{
+    		display:none;
+    		width: 100%;
+    		text-align: center;
+    	}
+    </style>
 </head>
 
 <body>
@@ -32,7 +39,7 @@
     -->
     <div class="sidebar-wrapper">
         <div class="logo">
-            <a href="http://www.creative-tim.com" class="simple-text">
+            <a href="#" class="simple-text">
                 Hospi-Hotel
             </a>
         </div>
@@ -150,7 +157,12 @@
                             <div class="card card-plain table-plain-bg">
                                 <div class="card-header ">
                                     <h4 class="card-title">Liste des réservation</h4>
-                                    <p class="card-category">Here is a subtitle for this table</p>
+                                    <div class="alert alert-success" role="alert" id="refuse">
+										La réservation a été Refusé !
+									</div>
+									<div class="alert alert-success" role="alert" id="accept">
+										La réservation a été Accepté !
+									</div>
                                 </div>
                                 <div class="card-body table-full-width table-responsive">
                                     <table class="table table-hover">
@@ -263,7 +275,6 @@
 	 /**************/
 		var reservations;
 		var acookie = getCookieByName("userInfo");
-		alert(JSON.parse(acookie).username);
 		$.ajax({
 	        type: "GET",
 	        url: "/getReservationByNameHotel",
@@ -298,15 +309,15 @@
 				var td6 = document.createElement('td');
 				switch (reservations[i].etat) {
 				case 1:
-					var button= $('<button type="button" style="background-color:#32f35c;border-radius:5px;pointer-events:none;width:80px;">Accepté</button>');
+					var button= $('<button type="button" style="background-color:#32f35c;border-radius:5px;pointer-events:none;width:80px;border: none"">Accepté</button>');
 					button.appendTo(td6);
 					break;
 				case 2:
-					var button= $('<button type="button" style="background-color:#e84747;border-radius:5px;pointer-events:none;width:80px;">Refusé</button>');
+					var button= $('<button type="button" style="background-color:#e84747;border-radius:5px;pointer-events:none;width:80px;border: none"">Refusé</button>');
 					button.appendTo(td6);
 					break;
 				case 3:
-					var button= $('<button type="button" style="background-color:#d8d214;border-radius:5px;pointer-events:none;width:80px;">Annulé</button>');
+					var button= $('<button type="button" style="background-color:#d8d214;border-radius:5px;pointer-events:none;width:80px;border: none"">Annulé</button>');
 					button.appendTo(td6);
 					break;
 				default:
@@ -332,26 +343,40 @@
 					           {
 					        	   button=form.find("button");
 					        	   text=button.text();
-					        	   alert(text);
-					        	   /*form.prev().remove();
-					        	   if(text="Accepter")
-					        	   button.css('background-color','#d8d214');
 					        	   button.css('color','black');
+					        	   button.css('border','none');
 					        	   button.off();
 					        	   button.attr("disabled", true);
 					        	   button.attr("pointer-events", 'none');
-					        	   $('#fail').css('display','none');
-					        	   $('#succes').css('display','block');
+					        	   if(text=="Accepter"){
+					        		   form.next().remove();
+					        		   button.css('background-color','#32f35c');
+					        		   $('#refuse').css('display','none');
+						        	   $('#accept').css('display','block');
+						        	   setTimeout(
+											function() 
+											 {
+												$('#accept').fadeOut(2000);
+								 		}, 1000);
+					        	   }else if(text=="Refuser"){
+					        		   form.prev().remove();
+					        		   button.css('background-color','#e84747');
+					        		   $('#refuse').css('display','block');
+						        	   $('#accept').css('display','none');
+						        	   setTimeout(
+											function() 
+											 {
+												$('#refuse').fadeOut(2000);
+									 	}, 1000);
+					        	   }
 					        	   
-					        	   setTimeout(
-										 function() 
-									 	{
-											$('#succes').fadeOut(3000);
-							 		}, 1000); */
-					           }
+					        	   
+					        	   
+					           		}
 					     });
 					})
-					form.appendTo(td6);
+					form1.appendTo(td6);
+					form2.appendTo(td6);
 				}
 				tr.append(td6);
 				$('#tableBody').append(tr);

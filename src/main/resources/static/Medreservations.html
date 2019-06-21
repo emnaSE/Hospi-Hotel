@@ -6,7 +6,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Light Bootstrap Dashboard - Free Bootstrap 4 Admin Dashboard by Creative Tim</title>
+    <title>Hospi-Hotel</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
         name='viewport' />
     <!--     Fonts and icons     -->
@@ -31,12 +31,7 @@
 
 <body>
     <div class="wrapper">
-    <!-- popoup -->
-    <!-- Button trigger modal
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#popup">
-  Launch demo modal
-</button>
-
+    <!-- popoup
 
 <div class="modal fade" id="popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -56,8 +51,7 @@
       </div>
     </div>
   </div>
-</div>
-     popup -->
+</div>	 -->
     
         <div class="sidebar" data-image="../assets/img/sidebar-5.jpg">
             <!--
@@ -169,7 +163,7 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#pablo">
+                                <a class="nav-link" id="deconnexion" onclick="deleteAllCookies()">
                                     <span class="no-icon">Se Déconnecter</span>
                                 </a>
                             </li>
@@ -342,21 +336,21 @@
 				var td6 = document.createElement('td');
 				switch (reservations[i].etat) {
 				case 1:
-					var button= $('<button type="button" style="background-color:#32f35c;border-radius:5px;pointer-events:none;width:80px;">Accepté</button>');
+					var button= $('<button type="button" style="background-color:#32f35c;border-radius:5px;pointer-events:none;width:80px;border: none">Accepté</button>');
 					button.appendTo(td6);
 					break;
 				case 2:
-					var button= $('<button type="button" style="background-color:#e84747;border-radius:5px;pointer-events:none;width:80px;">Refusé</button>');
+					var button= $('<button type="button" style="background-color:#e84747;border-radius:5px;pointer-events:none;width:80px;border: none">Refusé</button>');
 					button.appendTo(td6);
 					break;
 				case 3:
-					var button= $('<button type="button" style="background-color:#d8d214;border-radius:5px;pointer-events:none;width:80px;">Annulé</button>');
+					var button= $('<button type="button" style="background-color:#d8d214;border-radius:5px;pointer-events:none;width:80px;border: none">Annulé</button>');
 					button.appendTo(td6);
 					break;
 				default:
 					var form=$('<form method="GET" class="formAnnul" action="/EtatCancelled"></form>');
 					var hiddenId=$('<input type="text" style="display:none" name="id" value="'+reservations[i].id+'">');
-					var button= $('<button type="submit" style="background-color:#5de1ff;border-radius:5px;width:80px;">En cours</button>');
+					var button= $('<button type="submit" style="background-color:#5de1ff;border-radius:5px;width:80px;" data-toggle="modal" data-target="#popup">En cours</button>');
 					hiddenId.appendTo(form);
 					button.appendTo(form);
 					$(document).on('submit', 'form', function(evt){
@@ -373,6 +367,7 @@
 					        	   button.text("Anuulé");
 					        	   button.css('background-color','#d8d214');
 					        	   button.css('color','black');
+					        	   button.css('border','none');
 					        	   button.off();
 					        	   button.attr("disabled", true);
 					        	   button.attr("pointer-events", 'none');
