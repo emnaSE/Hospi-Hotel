@@ -31,6 +31,34 @@
 
 <body>
     <div class="wrapper">
+    <!-- popoup -->
+    <!-- Button trigger modal
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#popup">
+  Launch demo modal
+</button>
+
+
+<div class="modal fade" id="popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Êtes-vous sûr de vouloir Annuler cette réservation?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Continuer</button>
+        <button type="button" class="btn btn-primary">Anuuler</button>
+      </div>
+    </div>
+  </div>
+</div>
+     popup -->
+    
         <div class="sidebar" data-image="../assets/img/sidebar-5.jpg">
             <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
@@ -165,7 +193,7 @@
 									  Echec Lors de l'annulation de la réservation !
 									</div>
                                 </div>
-                                <div class="card-body table-full-width table-responsive">
+                                <div id="buttt" class="card-body table-full-width table-responsive">
                                     <table class="table table-hover table-striped">
                                         <thead>
                                             <th>Nom Hotel</th>
@@ -188,6 +216,7 @@
             </div>
             
         </div>
+        
     </div>
     <!--   -->
     <!-- <div class="fixed-plugin">
@@ -276,26 +305,6 @@
 
  jQuery(document).ready(function(){
 	 /***********/
-	$('form').submit(function(e){
-			e.preventDefault();
-			alert("hello");
-		    var form = $(this);
-		    var url = form.attr('action');
-
-		    $.ajax({
-		           type: "GET",
-		           url: url,
-		           data: form.serialize(),
-		           success: function(data)
-		           {
-		        	   alert("hello");
-		        	   form.last().css( "background-color", "blue" );
-		        	   form.last().html( "Annulé" );
-		        	   $('#succes').css('display','block');
-		           }
-		         });
-
-		});
 	 /**************/
 		var reservations;
 		var acookie = getCookieByName("userInfo");
@@ -333,86 +342,70 @@
 				var td6 = document.createElement('td');
 				switch (reservations[i].etat) {
 				case 1:
-					var button= $('<button type="button" style="background-color:#d8d214;border-radius:5px;pointer-events:none">Accepté</button>');
+					var button= $('<button type="button" style="background-color:#32f35c;border-radius:5px;pointer-events:none;width:80px;">Accepté</button>');
 					button.appendTo(td6);
 					break;
 				case 2:
-					var button= $('<button type="button" style="background-color:#d8d214;border-radius:5px;disabled:true;pointer-events:none">Refusé</button>');
+					var button= $('<button type="button" style="background-color:#e84747;border-radius:5px;pointer-events:none;width:80px;">Refusé</button>');
 					button.appendTo(td6);
 					break;
 				case 3:
-					var button= $('<button type="button" style="background-color:#d8d214;border-radius:5px;disabled:true;pointer-events:none">Annulé</button>');
+					var button= $('<button type="button" style="background-color:#d8d214;border-radius:5px;pointer-events:none;width:80px;">Annulé</button>');
 					button.appendTo(td6);
 					break;
 				default:
 					var form=$('<form method="GET" class="formAnnul" action="/EtatCancelled"></form>');
 					var hiddenId=$('<input type="text" style="display:none" name="id" value="'+reservations[i].id+'">');
-					var button= $('<button type="submit" style="background-color:#d8d214;border-radius:5px">En cours</button>');
+					var button= $('<button type="submit" style="background-color:#5de1ff;border-radius:5px;width:80px;">En cours</button>');
 					hiddenId.appendTo(form);
 					button.appendTo(form);
+					$(document).on('submit', 'form', function(evt){
+					    evt.preventDefault();
+					    var form = $(this);
+					    var url = form.attr('action');
+					    $.ajax({
+					           type: "GET",
+					           url: url,
+					           data: form.serialize(),
+					           success: function(data)
+					           {
+					        	   button=form.find("button");
+					        	   button.text("Anuulé");
+					        	   button.css('background-color','#d8d214');
+					        	   button.css('color','black');
+					        	   button.off();
+					        	   button.attr("disabled", true);
+					        	   button.attr("pointer-events", 'none');
+					        	   $('#fail').css('display','none');
+					        	   $('#succes').css('display','block');
+					        	   
+					        	   setTimeout(
+										 function() 
+									 	{
+											$('#succes').fadeOut(3000);
+							 		}, 1000);
+					           }
+					     });
+					})
 					form.appendTo(td6);
 					button.mouseenter(function() {
 					    $(this).html("Annuler");
-					    $(this).css("background-color", "#75ff3b");
+					    $(this).css("background-color", "#d8d214");
 					}).mouseleave(function() {
 						$(this).html("En cours");
-						$(this).css("background-color", "#d8d214");
+						$(this).css("background-color", "#5de1ff");
 					});
 				}
 				tr.append(td6);
 				$('#tableBody').append(tr);
 			}
 		}
-	
 		
-	/***********/
-
-		/********** 5edmet mohamed 
-		var jqxhr = $.get( "getReservation?medecin="+idMed, function() {
-			
-			})
-			  .done(function(data){
-			  	alert(JSON.stringify(data));
-			  	//var info=JSON.stringify(data);
-			  	var i=0;
-			  	alert(JSON.stringify(data.length));
-			  	console.log(data[0]);
-			  	for(i=0;i<data.length; i++)
-                 {
-			  		
-                   
-                  //document.getElementById("nom").innerHTML=data.id;
-			  		$("#name").html(data[i].name);
-			  	
-			  		$("#nb_Lits").html(data[i].nb_Lits);
-			  		$("#bookdate").html(data[i].bookDate);
-			  		//$("#nam").html(data[nomHotel].name);
-			  		
-			  		 
-                    
-                  
-                 }
-
-			  	
-			  })
-			  .fail(function() {
-			   
-			  })
-			  .always(function() {
-			   
-			  });
-			 
-			
-			//jqxhr.always(function() {
-			
-			//}); 
-
-		*********/
 	});
 
 </script>
- 
- 
+
+
 </body>
 <!--   Core JS Files   -->
 
