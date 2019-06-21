@@ -21,12 +21,12 @@ public class BaseUsersGenerator {
 
 	
 	static {
-		user1 = new BaseUser(1l, "Zarrouk", "1234", "M",0);
-	//	user2 = new BaseUser(2l, "Hôtel Boulevard Saint-Jacques", "12", "H",0);
-		user3 = new BaseUser(3l, "Ben Abdallah", "azerty", "P",0);
-		user4 = new BaseUser(4l, "Ben mohamed", "Tun12", "P",0);
-		user5 = new BaseUser(5l, "karray", "Tun12", "M",0);
-		user6 = new BaseUser(6l, "Foulen", "azerty1234", "P",0);
+		user1 = new BaseUser(1l, "Alain", "1234", "M",0);
+		user2 = new BaseUser(2l, "Hôtel Boulevard Saint-Jacques", "12", "H",0);
+		user3 = new BaseUser(3l, "François", "azerty", "P",0);
+		user4 = new BaseUser(4l, "Cindy", "Fa1234", "P",0);
+		user5 = new BaseUser(5l, "Marie", "Tun12", "M",0);
+		user6 = new BaseUser(6l, "Bervain", "azerty1234", "P",0);
 		user7 = new BaseUser(7l, "Hôtel du Lion", "12", "H",0);
 
 		
