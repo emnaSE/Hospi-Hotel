@@ -207,7 +207,7 @@
     function intialisation(){
 	    $.ajax({
 	           type: "GET",
-	           url: "http://localhost:8080/getListHotelsByIdMed", //use idMedcin instead of 2
+	           url: "/getListHotelsByIdMed", //use idMedcin instead of 2
 	           type : 'GET',
 	           data : 'id=' + JSON.parse(getCookieByName("userInfo")).id,
 	           success: function(data)
