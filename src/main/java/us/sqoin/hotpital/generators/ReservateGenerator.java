@@ -84,13 +84,17 @@ public class ReservateGenerator {
 		List<Reservation> arf = getDefaultReservations();
 		List<Reservation>  ListHot = new ArrayList<Reservation>();
 		
+		
 		for (Reservation s : arf) {
-			if(s.getNomHotel().equals(name) )
+			if(s.getNomHotel().trim().equals(name.trim()) )
 			{
+				//System.out.println("******************"+ name);
+				System.out.print("azzaaaaaaaaaaaaaaaaaaaaaaaa"+s.getNomHotel());
 				ListHot.add(s);
 
 			}
 		}
+		System.out.println(ListHot);
 		return ListHot;
 		
 	}
@@ -157,7 +161,7 @@ public class ReservateGenerator {
 		Reservation r = new Reservation(id, nomHotel, nomPatient, nomMed, nb_lits_res , d1 , f1);
 		r.setDate_Deb(df2.format(d1));
 		r.setDate_Fin(df2.format(f1));
-		System.out.println(df2.format(f1));
+		//System.out.println(df2.format(f1));
 		listResev.add(r);
 		return r;
 	
@@ -244,7 +248,7 @@ public class ReservateGenerator {
 			if(s.getId()==id )
 			{
 				s.setEtat(3);
-				System.out.println(arf);
+				//System.out.println(arf);
 				return true;
 			}
 		
@@ -261,7 +265,7 @@ public class ReservateGenerator {
 			if(s.getId()==id )
 			{
 				s.setEtat(1);
-				System.out.println(arf);
+				//System.out.println(arf);
 				return true;
 			}
 		
@@ -279,7 +283,7 @@ public class ReservateGenerator {
 			if(s.getId()==id )
 			{
 				s.setEtat(2);
-				System.out.println(arf);
+			//	System.out.println(arf);
 				return true;
 			}
 		
