@@ -29,7 +29,10 @@
         #info {
             text-align: center;
         }
-
+		#hospital {
+            text-align: center;
+            color: #1DC7EA
+        }
         .checked {
             color: orange;
         }
@@ -197,6 +200,32 @@
     </div>
 
     
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+   var hotel;
+    
+    function intialisation(){
+	    $.ajax({
+	           type: "GET",
+	           url: "http://localhost:8080/getListHotelsByIdMed", //use idMedcin instead of 2
+	           type : 'GET',
+	           data : 'id=' + JSON.parse(getCookieByName("userInfo")).id,
+	           success: function(data)
+	           {          
+	              /*setCookie("hotels",JSON.stringify(data.hotels), 2);
+	              setCookie("med",JSON.stringify(data.id), 2);*/
+	             hotel=JSON.stringify(data);
+	             // alert("message1"+hotel);
+	           },
+	    error: function (jqXHR, status, err) {
+	        alert("une erreur c'est produit réessayer");
+	      }
+	         });
+    }
+
+
+</script>
+    
    <script>
  
  /* var data2= getCookie("hotels");
@@ -205,7 +234,9 @@
   var map, infoWindow;
   var data = '[{"id":2,"name":"Hôtel du Lion","latitude":48.833401,"longitude":  2.331943,"rating":4,"beds":9,"idM":null},'+
   '{"id":2,"name":"Hôtel FIAP Jean Monnet","latitude":48.830467,"longitude": 2.338070,"rating":3,"beds":3,"idM":null},'+
-   	  '{"id":2,"name":"Hôtel Boulevard Saint-Jacques","latitude":48.831605, "longitude": 2.339771,"rating":3,"beds":3,"idM":null},'+
+  '{"id":2,"name":"Hôtel de Massa","latitude":48.836269, "longitude": 2.337639,"rating":3,"beds":3,"idM":null},'+
+  '{"id":2,"name":"Seven Hotel","latitude":48.838971,"longitude": 2.345647,"rating":4,"beds":3,"idM":null},'+
+   	  '{"id":2,"name":"Hôtel Boulevard Saint-Jacques ","latitude":48.831605, "longitude": 2.339771,"rating":3,"beds":3,"idM":null},'+
    	  '{"id":2,"name":"Hôtel Ibis ","latitude":48.827423, "longitude": 2.321030,"rating":3,"beds":3,"idM":null}]';
         
   function distance(lat1, lon1, lat2, lon2, unit) {
@@ -251,6 +282,19 @@
     		      icon: 'http://167.86.108.108:882/hotel-yellow.png'
     		    }
     		  };
+      
+      if(hotel== null)
+      {
+    	  intialisation();
+      }
+      
+      try {
+    	  intialisation();
+    	}
+    	catch(err) {
+    		alert("une erreur c'est produit réessayer");
+    	}
+      
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
                 center: { lat: posdoc.lat, lng: posdoc.lng },
@@ -258,7 +302,7 @@
             });
             infoWindow = new google.maps.InfoWindow;
 
-            obj = JSON.parse(data);
+            obj = JSON.parse(hotel);
             var dis=distance(posdoc.lat, posdoc.lng, obj[0].latitude, obj[0].longitude, "k");
             
             for ($f = 1; $f < obj.length; $f++) 
@@ -270,7 +314,7 @@
             }
           
             for ($i = 0; $i < obj.length; $i++) {
-                var marker = new google.maps.Marker({ position: { lat: obj[$i].latitude, lng: obj[$i].longitude }, map: map,icon: icons['hotel'].icon });
+                var marker = new google.maps.Marker({ position: { lat: obj[$i].latitude, lng: obj[$i].longitude }, map: map });
                 var infowincontent = document.createElement('div');
                 infowincontent.setAttribute('id', 'info');
                 var strong = document.createElement('strong');
@@ -325,13 +369,27 @@
 				 infoWindow.open(map, markkclone);
               }
             }
-
-            infoWindow.setPosition(posdoc);
-            /*infoWindow.setContent('Vous êtes ici');
-            infoWindow.open(map);*/
+            
+   var hospital = new google.maps.Marker({ position: { lat: posdoc.lat, lng: posdoc.lng }, map: map,icon: icons['hotel'].icon });
+   infoWindow2 = new google.maps.InfoWindow;
+            infoWindow2.setPosition(posdoc);  
+            var infowincontent2 = document.createElement('div');
+            infowincontent2.setAttribute('id', 'hospital');
+            var strong = document.createElement('strong');
+            strong.setAttribute('id', 'hotelName');
+            strong.textContent = 'Hôpital Cochin'
+            infowincontent2.appendChild(strong);
+            infoWindow2.setContent(infowincontent2);
+            infoWindow2.open(map,hospital);
             map.setCenter(posdoc);
+            hospital.addListener('click', function () {
+            	 
+                infoWindow2.setContent(infowincontent2);
+                infoWindow2.open(map, hospital);
+            });
         }
-        //$.when(intialisation()).then(initMap());
+        
+       $.when(intialisation()).then(initMap());
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap">
     </script>
