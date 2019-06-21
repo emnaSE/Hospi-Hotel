@@ -63,6 +63,31 @@ public class HotelGenerator {
 		return Arrays.asList(hotel2);
 	}
 
+	
+	public static Hotel getHotel3() {
+		return hotel3;
+	}
+
+	public static void setHotel3(Hotel hotel3) {
+		HotelGenerator.hotel3 = hotel3;
+	}
+
+	public static Hotel getHotel4() {
+		return hotel4;
+	}
+
+	public static void setHotel4(Hotel hotel4) {
+		HotelGenerator.hotel4 = hotel4;
+	}
+
+	public static List<Hotel> getListHo() {
+		return ListHo;
+	}
+
+	public static void setListHo(List<Hotel> listHo) {
+		ListHo = listHo;
+	}
+
 	public static List<Hotel> getDefaultsHotels() {
 		return ListHo;
 	}

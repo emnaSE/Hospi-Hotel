@@ -15,17 +15,23 @@ public class MedecinGenerator {
 	private static Medecin MD3;
 	
 	private static ArrayList<Hotel> m = new ArrayList<Hotel>();
+	private static ArrayList<Hotel> m1 = new ArrayList<Hotel>();
 	private static ArrayList<Patient> p = new ArrayList<Patient>();
 	private static ArrayList<Medecin> Medecins = new ArrayList<Medecin>();
 	
     
 	static {
 		m.add(HotelGenerator.getHotel1());
+		m1.add(HotelGenerator.getHotel1());
+		m.add(HotelGenerator.getHotel2());
+		m.add(HotelGenerator.getHotel3());
+		m.add(HotelGenerator.getHotel4());
+		
 		p.add(PatientGenerator.getP1());
 		//System.out.print(p);
 
 		MD1 = new Medecin(BaseUsersGenerator.getUser1(),"Zarrouk", "Souhail", "Cardiologie",m,p);
-	    MD2 = new Medecin(BaseUsersGenerator.getUser5(),"kochbati", "Mourad", "Chirurgie générale pédiatrique",m,p);
+	    MD2 = new Medecin(BaseUsersGenerator.getUser5(),"kochbati", "Mourad", "Chirurgie générale pédiatrique",m1,p);
 	    Medecins.add(MD1);
 	    Medecins.add(MD2);
 		
