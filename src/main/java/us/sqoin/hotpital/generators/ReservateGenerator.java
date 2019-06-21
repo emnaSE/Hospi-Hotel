@@ -28,8 +28,8 @@ public class ReservateGenerator {
 	
 				
 
-		reservation1 = new Reservation(1l, HotelGenerator.getHotel1().getName(), PatientGenerator.getP1().getFirstName(), "Zarrouk", 2, new Date(),new Date(),0,"2019-06-24","2019-06-27");
-	    reservation2 = new Reservation(2l, "Mouradi", "Fathi", "Zarrouk", 1, new Date(), new Date(), 1,"2019-07-29","2019-07-09");
+		reservation1 = new Reservation(1l, HotelGenerator.getHotel1().getName(), "François", "Alain", 2, new Date(),new Date(),0,"2019-06-24","2019-06-27");
+	    reservation2 = new Reservation(2l, "Hôtel Boulevard Saint-Jacques", "Cindy", "Alain", 1, new Date(), new Date(), 1,"2019-07-29","2019-07-09");
 	    // reservation3 = new Reservation(2l, "Mouradi", "Fathi", "Zarrouk", 1, new Date(), new Date(), 1,"2019-07-29","2019-07-09");
 
 	    listResev.add(reservation1);
