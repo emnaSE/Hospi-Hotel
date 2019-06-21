@@ -21,6 +21,7 @@
      <script src="../assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
      <script src="../assets/js/notify.js"></script>
      <script src="../assets/js/date.format.js"></script>
+     <script src="assets/js/cookies.js"></script>
 </head>
 
 <body>
@@ -218,7 +219,7 @@
 	        	console.log(date.toLocaleDateString());
 	        	
 	           reservations=JSON.stringify(data);
-	           console.log(reservations);
+	           //console.log(reservations);
 	           reservations = JSON.parse(reservations);
 	          
 	           var rv =reservations[i].date_Deb;
@@ -230,23 +231,21 @@
 	           console.log(rv);
 	           console.log(result);
 	           
-	           for(i=0;i<reservations.length; i++)
-               {
-	        	   $('#notify').html(reservations[i].nomMed);
-
-	        	   $('#nomp').html(reservations[i].nomPatient);
-	        	   $('#nblit').html(reservations[i].nb_lits_res);
-	        	   if(result==rv){
-	        	
-	        	  // $.notify("Nouvelle reservation du Dr :"+reservations[i].nomMed+ "\n Pour le patient:"+reservations[i].nomPatient+"\n Nombre delit:"+reservations[i].nb_lits_res, "Info");
-	        	   }  
-	        		  
-               }
+	          
 	           
 	           var u=0;
+	           
+	          
+	          
 	           while(u<reservations.length)
 	        	   {
-	           console.log(reservations);
+	        	   var user=JSON.parse(getCookieByName("userInfo")).username;
+	        	  // alert(user);
+	        	   
+	           
+	               console.log(reservations);
+	           
+	           
 	           var infowincontent = document.createElement('div');
                infowincontent.setAttribute('class', 'alert alert-info');
                var buton = document.createElement('button');
@@ -258,37 +257,30 @@
                
                
               
-                 buton.append(i);
-                infowincontent.append(buton);
+               buton.append(i);
+               infowincontent.append(buton);
                var informations=document.createElement('span');
-               informations.textContent = "Nouvelle reservation du docteur Mr \n:" +reservations[u].nomMed +"\n De\n"+reservations[u].nb_lits_res+"\n Lit\n Pour le Patient \n"+reservations[u].nomPatient+"\n du\n"+reservations[u].date_Deb+"\n au \n"+reservations[u].date_Fin;
+               informations.textContent = "Nouvelle reservation du docteur Mr \n:"+reservations[u].nomMed +"\n De\n"+reservations[u].nb_lits_res+"\n Lit\n Pour le Patient \n"+reservations[u].nomPatient+"\n du\n"+reservations[u].date_Deb+"\n au \n"+reservations[u].date_Fin;
                
                infowincontent.append(informations);
 				
                $('#tableBody').append(infowincontent);
-               u++;
+               
+	        	
+	   	        
+	        	   u++;
+              
 	        	   }
 	          
 	        }
 	      });
 		
 		function fillTable(){
-			 
-			
-				
-				
+		
 			
 		}
 	
-	
-		
-	/***********/
-	
-			
 	});
- 
- 
-
 
 </script>
             
