@@ -234,7 +234,6 @@
   var map, infoWindow;
   var data = '[{"id":2,"name":"Hôtel du Lion","latitude":48.833401,"longitude":  2.331943,"rating":4,"beds":9,"idM":null},'+
   '{"id":2,"name":"Hôtel FIAP Jean Monnet","latitude":48.830467,"longitude": 2.338070,"rating":3,"beds":3,"idM":null},'+
-  '{"id":2,"name":"Hôtel de Massa","latitude":48.836269, "longitude": 2.337639,"rating":3,"beds":3,"idM":null},'+
   '{"id":2,"name":"Seven Hotel","latitude":48.838971,"longitude": 2.345647,"rating":4,"beds":3,"idM":null},'+
    	  '{"id":2,"name":"Hôtel Boulevard Saint-Jacques ","latitude":48.831605, "longitude": 2.339771,"rating":3,"beds":3,"idM":null},'+
    	  '{"id":2,"name":"Hôtel Ibis ","latitude":48.827423, "longitude": 2.321030,"rating":3,"beds":3,"idM":null}]';
@@ -302,7 +301,7 @@
             });
             infoWindow = new google.maps.InfoWindow;
 
-            obj = JSON.parse(hotel);
+            obj = JSON.parse(data);
             var dis=distance(posdoc.lat, posdoc.lng, obj[0].latitude, obj[0].longitude, "k");
             
             for ($f = 1; $f < obj.length; $f++) 
