@@ -5,6 +5,24 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Properties;
+
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+
+
 
 public class Reservation implements Serializable {
 
@@ -176,8 +194,6 @@ public class Reservation implements Serializable {
 				+ ", nb_lits_res=" + nb_lits_res + ", Date_Deb=" + Date_Deb + ", Date_Fin=" + Date_Fin + "]";
 	}
     
-	
-	
 	
 	
 	
