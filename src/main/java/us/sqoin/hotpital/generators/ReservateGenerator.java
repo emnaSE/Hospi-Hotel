@@ -28,8 +28,8 @@ public class ReservateGenerator {
 	
 				
 
-		reservation1 = new Reservation(1l, HotelGenerator.getHotel1().getName(), "François", "Alain", 2, new Date(),new Date(),0,"2019-06-24","2019-06-27");
-	    reservation2 = new Reservation(2l, "Hôtel Boulevard Saint-Jacques", "Cindy", "Alain", 1, new Date(), new Date(), 1,"2019-07-29","2019-07-09");
+		reservation1 = new Reservation(1l, HotelGenerator.getHotel1().getName(), "François", "Alain", 2, new Date(),new Date(),0,"25-06-2019","27-06-2019");
+	    reservation2 = new Reservation(2l, "Hôtel Boulevard Saint-Jacques", "Cindy", "Alain", 1, new Date(), new Date(), 1,"30-06-2019","31-06-2019");
 	    // reservation3 = new Reservation(2l, "Mouradi", "Fathi", "Zarrouk", 1, new Date(), new Date(), 1,"2019-07-29","2019-07-09");
 
 	    listResev.add(reservation1);
@@ -137,6 +137,8 @@ public class ReservateGenerator {
 		//Date ff =new SimpleDateFormat("yyyy-MM-dd").parse(date_Fin);
 		
 	       DateFormat df2 = new SimpleDateFormat("yyyy-MM-dd");
+	     //  df2.setTimeZone(TimeZone.getTimeZone("Europe/Paris"));
+
            Date d1 = df2.parse(date_Deb);
            Date f1 = df2.parse(date_Fin);
            
@@ -159,8 +161,22 @@ public class ReservateGenerator {
 		
 
 		Reservation r = new Reservation(id, nomHotel, nomPatient, nomMed, nb_lits_res , d1 , f1);
-		r.setDate_Deb(df2.format(d1));
-		r.setDate_Fin(df2.format(f1));
+	    String yyyy = df2.format(d1).substring(0, 4);
+	    String mm =  df2.format(d1).substring(5, 7);
+	    String dd =  df2.format(d1).substring(8, 10);
+	    
+	    
+	    System.out.println("Year :"+yyyy);
+	    System.out.println("Month :"+mm);
+	    System.out.println("Day :"+dd);
+	    
+	    
+	    String yyyy1 = df2.format(f1).substring(0, 4);
+	    String mm1 =  df2.format(f1).substring(5, 7);
+	    String dd1 =  df2.format(f1).substring(8, 10);
+	    
+		r.setDate_Deb(dd+"-"+mm+"-"+yyyy);
+		r.setDate_Fin(dd1+"-"+mm1+"-"+yyyy1);
 		//System.out.println(df2.format(f1));
 		listResev.add(r);
 		return r;
