@@ -15,7 +15,10 @@ public class Hotel implements Serializable {
 	private int rating;
 	private int beds;
     
-	
+	public Hotel()
+	{
+		
+	}
 	
 	
 	
